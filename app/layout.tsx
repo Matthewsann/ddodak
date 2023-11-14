@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Footer } from "./footer";
 
 export const metadata: Metadata = {
   title: "또닥또닥",
@@ -13,13 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={
-          "w-full h-screen flex items-center justify-center bg-primary"
-        }
-      >
-        <main className="w-full max-w-md min-h-screen bg-white">
+      <body className="w-full h-screen flex items-center justify-center bg-primary">
+        <main className="relative w-full max-w-md min-h-screen bg-white">
           {children}
+          <Footer />
         </main>
       </body>
     </html>

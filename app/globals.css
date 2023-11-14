@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+
+@layer components {
+  .s-core {
+    @apply font-['S-CoreDream']
+  }
+}

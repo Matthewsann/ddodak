@@ -17,6 +17,7 @@ const config: Config = {
         primary: { DEFAULT: "#FF6858", blend: "#FFF4F0" },
         secondary: "#4A5BCD",
         background: "#F8F8F8",
+        footer: "#FBFBFB",
         black: {
           DEFAULT: "#090909",
         },
