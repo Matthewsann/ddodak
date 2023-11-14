@@ -23,6 +23,18 @@ const fetchData = async () => {
             "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
           location: "서울시 강남구",
         },
+        {
+          name: "김상담",
+          image:
+            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+          location: "서울시 강남구",
+        },
+        {
+          name: "김상담",
+          image:
+            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+          location: "서울시 강남구",
+        },
       ]);
     }, 1000);
   });
