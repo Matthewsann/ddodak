@@ -4,8 +4,14 @@
 
 @import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
 
+@layer base {
+  html {
+    @apply font-['S-CoreDream'] text-black;
+  }
+}
+
 @layer components {
-  .s-core {
-    @apply font-['S-CoreDream']
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

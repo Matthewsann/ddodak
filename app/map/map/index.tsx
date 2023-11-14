@@ -23,12 +23,6 @@ export default function Map({ loc }: { loc: Coordinates }) {
     mapRef.current = map;
   }, [loc]);
 
-  useEffect(() => {
-    return () => {
-      mapRef.current?.destroy();
-    };
-  }, []);
-
   return (
     <>
       <Script

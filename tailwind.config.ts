@@ -25,7 +25,17 @@ const config: Config = {
     },
   },
   daisyui: {
-    themes: false,
+    themes: [
+      {
+        mytheme: {
+          primary: "#FF6858",
+          secondary: "#4A5BCD",
+          accent: "#FFF4F0",
+          neutral: "#090909",
+          "base-100": "#F8F8F8",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };
