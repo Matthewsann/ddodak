@@ -2,12 +2,12 @@
 
 import Script from "next/script";
 import { Coordinates, NaverMap } from "@/app/types/map";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 const mapId = "mapmapmap";
 
 export default function Map({ loc }: { loc: Coordinates }) {
-  const mapRef = useRef<NaverMap | null>(null);
+  const mapRef = useRef<NaverMap>();
 
   const initializeMap = useCallback(() => {
     const mapOptions = {

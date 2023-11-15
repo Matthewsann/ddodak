@@ -17,4 +17,7 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+  .shadow-float {
+    @apply shadow-[4px_4px_25px_rgba(9,9,9,0.2)];
+  }
 }

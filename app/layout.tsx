@@ -17,7 +17,6 @@ export default function RootLayout({
       <body className="w-full h-screen flex items-center justify-center bg-primary">
         <main className="relative w-full max-w-md min-h-screen bg-white h-full overflow-x-hidden">
           {children}
-          <Footer />
         </main>
       </body>
     </html>
