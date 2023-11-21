@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Footer } from "./footer";
 
 export const metadata: Metadata = {
   title: "상담플러스",
