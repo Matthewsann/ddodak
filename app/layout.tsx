@@ -3,8 +3,8 @@ import "./globals.css";
 import { Footer } from "./footer";
 
 export const metadata: Metadata = {
-  title: "또닥또닥",
-  description: "내게 맞는 상담사 찾기",
+  title: "상담플러스",
+  description: "대한민국 모든 상담센터/상담사 정보를 한 곳에!",
 };
 
 export default function RootLayout({
