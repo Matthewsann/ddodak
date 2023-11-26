@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="w-full h-screen flex items-center justify-center bg-primary">
-        <main className="relative w-full max-w-md min-h-screen bg-white h-full overflow-x-hidden">
+        <main className="relative w-full max-w-md h-screen max-h-screen bg-background overflow-x-hidden overflow-y-scroll no-scrollbar">
           {children}
         </main>
       </body>

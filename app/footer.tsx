@@ -10,7 +10,7 @@ const ROUTERS = [
 ];
 
 export const Footer = () => (
-  <div className="absolute w-full bottom-0 px-4 pb-5">
+  <footer className="sticky w-full left-0 right-0 bottom-0 px-4 pb-5">
     <div className="w-full grid grid-cols-5 py-2 px-7 rounded-full shadow-float bg-background">
       {ROUTERS.map((item, index) => (
         <Link
@@ -23,5 +23,5 @@ export const Footer = () => (
         </Link>
       ))}
     </div>
-  </div>
+  </footer>
 );
