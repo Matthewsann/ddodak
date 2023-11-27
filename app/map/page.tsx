@@ -4,6 +4,7 @@ import { useState } from "react";
 import MapContainer from "./map/container";
 import SearchHeader from "./search-header";
 import SearchFilter from "./search-filter";
+import SearchResult from "./search-result";
 
 export default function Map() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -15,6 +16,7 @@ export default function Map() {
         <div className="w-full h-full bg-green-400">
           <MapContainer />
         </div>
+        <SearchResult />
       </div>
       {isFilterOpen && <SearchFilter close={() => setIsFilterOpen(false)} />}
     </>
