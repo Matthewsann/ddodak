@@ -1,21 +1,27 @@
 import Sheet from "react-modal-sheet";
 import CounselorCard from "../components/counselor/card";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function SearchResult() {
   const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (ref.current) setMounted(true);
+  }, []);
+
   return (
     <div
       ref={ref}
       className="absolute bottom-0 left-0 right-0 pointer-events-none h-full"
     >
-      {ref.current && (
+      {mounted && (
         <Sheet
           isOpen={true}
           onClose={() => {}}
           snapPoints={[800, 200]}
           initialSnap={1}
-          mountPoint={ref.current}
+          mountPoint={ref.current!}
           className="!absolute"
         >
           <Sheet.Container className="!bg-background">
