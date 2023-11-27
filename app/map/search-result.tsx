@@ -22,7 +22,7 @@ export default function SearchResult() {
           snapPoints={[800, 200]}
           initialSnap={1}
           mountPoint={ref.current!}
-          className="!absolute"
+          className="!absolute !z-[50]"
         >
           <Sheet.Container className="!bg-background">
             <Sheet.Header />
