@@ -2,7 +2,11 @@ import Link from "next/link";
 import Icons from "../components/icons";
 import { useRouter } from "next/navigation";
 
-export default function SearchHeader() {
+export default function SearchHeader({
+  openFilter,
+}: {
+  openFilter: () => void;
+}) {
   const router = useRouter();
 
   return (
@@ -23,9 +27,12 @@ export default function SearchHeader() {
         </Link>
       </div>
       <div className="flex items-center">
-        <Link className="btn btn-ghost btn-circle" href={"/"}>
+        <button
+          className="btn btn-ghost btn-circle"
+          onClick={() => openFilter()}
+        >
           <Icons.Filter className="shrink-0" />
-        </Link>
+        </button>
       </div>
     </div>
   );
