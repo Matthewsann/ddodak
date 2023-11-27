@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Coordinates } from "@/app/types/map";
 import Map from ".";
+import Icons from "@/app/components/icons";
 
 export default function MapContainer() {
   const [loc, setLoc] = useState<Coordinates>();
@@ -17,5 +18,17 @@ export default function MapContainer() {
     initLocation();
   }, []);
 
-  return loc && <Map loc={loc} />;
+  return (
+    <div className="relative w-full h-full">
+      {loc && <Map loc={loc} />}
+      <button
+        className="btn btn-circle btn-ghost absolute bottom-4 left-4"
+        onClick={() => {
+          /* TODO: 현재 위치에서 검색 */
+        }}
+      >
+        <Icons.GPS />
+      </button>
+    </div>
+  );
 }

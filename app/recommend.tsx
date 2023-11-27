@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Icons from "@/app/components/icons";
-import CounselorList from "@/app/components/icons/counselor/list";
-import CounselorListLoading from "./components/icons/counselor/list/loading";
+import CounselorList from "@/app/components/counselor/list";
+import CounselorListLoading from "./components/counselor/list/loading";
 
 export default function Recommend() {
   return (

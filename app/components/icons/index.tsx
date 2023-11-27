@@ -6,6 +6,7 @@ import EmojiSmile from "./emoji-smile.svg";
 import Crosshair from "./crosshair.svg";
 import GoBack from "./go-back.svg";
 import Filter from "./filter.svg";
+import GPS from "./gps.svg";
 
 const Icons = {
   Home,
@@ -16,5 +17,6 @@ const Icons = {
   Crosshair,
   GoBack,
   Filter,
+  GPS,
 };
 export default Icons;
