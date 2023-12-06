@@ -10,18 +10,20 @@ const ROUTERS = [
 ];
 
 export const Footer = () => (
-  <footer className="sticky w-full left-0 right-0 bottom-0 px-4 pb-5">
-    <div className="w-full grid grid-cols-5 py-2 px-7 rounded-full shadow-float bg-background">
-      {ROUTERS.map((item, index) => (
-        <Link
-          key={index}
-          href={item.route}
-          className="flex flex-col items-center justify-center"
-        >
-          <div className="w-6 h-6">{item.icon}</div>
-          <div className="text-[11px] font-medium">{item.text}</div>
-        </Link>
-      ))}
-    </div>
-  </footer>
+  <div className="flex justify-center fixed inset-x-0 bottom-0">
+    <footer className="w-full max-w-md left-0 right-0 bottom-0 px-4 pb-5">
+      <div className="w-full grid grid-cols-5 py-2 px-7 rounded-full shadow-float bg-background">
+        {ROUTERS.map((item, index) => (
+          <Link
+            key={index}
+            href={item.route}
+            className="flex flex-col items-center justify-center"
+          >
+            <div className="w-6 h-6">{item.icon}</div>
+            <div className="text-[11px] font-medium">{item.text}</div>
+          </Link>
+        ))}
+      </div>
+    </footer>
+  </div>
 );
