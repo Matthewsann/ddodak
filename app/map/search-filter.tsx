@@ -3,7 +3,7 @@ import Icons from "../components/icons";
 
 export default function SearchFilter({ close }: { close: () => void }) {
   return (
-    <div className="absolute top-0 inset-x-0 min-h-screen bg-background z-[1000]">
+    <div className="absolute top-0 inset-x-0 min-h-[100dvh] bg-background z-[1000]">
       <header className="px-4 py-2 grid grid-cols-[48px_1fr_48px]">
         <button className="btn btn-ghost btn-circle" onClick={() => close()}>
           <Icons.GoBack className="shrink-0" />
