@@ -1,8 +1,24 @@
-export default function Home() {
+import Header from "@/components/header";
+import ProgramList from "./list";
+import ProgramTags from "./tags";
+import { Footer } from "@/footer";
+import { Suspense } from "react";
+import ProgramListLoading from "./loading";
+
+export default function Programs() {
   return (
-    <div>
-      <div>Page title: 프로그램 리스트</div>
-      <div>Route: /programs</div>
-    </div>
+    <>
+      <Header title="프로그램" />
+      <ProgramTags />
+      <div className="px-6 pb-24">
+        <div className="pb-4 font-light text-xs">
+          마감임박순 프로그램입니다.
+        </div>
+        <Suspense fallback={<ProgramListLoading />}>
+          <ProgramList />
+        </Suspense>
+      </div>
+      <Footer />
+    </>
   );
 }

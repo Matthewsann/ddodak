@@ -91,4 +91,7 @@
   .shadow-float {
     @apply shadow-[4px_4px_25px_rgba(9,9,9,0.2)];
   }
+  .skeleton {
+    @apply bg-gray-200 rounded animate-pulse;
+  }
 }
