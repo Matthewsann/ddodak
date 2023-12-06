@@ -8,13 +8,14 @@ export default function Recommend() {
     <section className="flex flex-col">
       <div className="flex justify-between pl-7 pr-3">
         <div className="flex flex-col gap-0.5">
-          <div className="font-medium text-sm">나랑 가까운 상담 찾기</div>
-          <div className="flex items-center text-xs font-light">
-            <Icons.Crosshair />
+          <div className="font-bold text-sm">내 주변 상담 센터</div>
+          <div className="flex items-center text-xs font-light gap-2">
+            <Icons.GPS />
             서울시 성북구
           </div>
         </div>
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost">
+          <div className="font-light text-[11px]">지도로 보기</div>
           <Icons.Map />
         </button>
       </div>

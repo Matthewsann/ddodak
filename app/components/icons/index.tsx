@@ -7,6 +7,8 @@ import Crosshair from "./crosshair.svg";
 import GoBack from "./go-back.svg";
 import Filter from "./filter.svg";
 import GPS from "./gps.svg";
+import Search from "./search.svg";
+import Signout from "./signout.svg";
 
 const Icons = {
   Home,
@@ -18,5 +20,7 @@ const Icons = {
   GoBack,
   Filter,
   GPS,
+  Search,
+  Signout,
 };
 export default Icons;

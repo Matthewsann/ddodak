@@ -9,13 +9,15 @@ const fetchData = async () => {
           title: "서울시 청년 그룹 상담 세션",
           image:
             "https://plus.unsplash.com/premium_photo-1668104454442-a251cc42ee58",
-          status: "모집중",
+          online: true,
+          "remain-date": 3,
         },
         {
           title: "서울시 청년 그룹 상담 세션",
           image:
             "https://plus.unsplash.com/premium_photo-1668104454442-a251cc42ee58",
-          status: "모집중",
+          online: false,
+          "remain-date": 4,
         },
       ]);
     }, 1000);

@@ -1,5 +1,6 @@
 export interface ProgramType {
   title: string;
   image: string;
-  status: string;
+  online: boolean;
+  "remain-date": number;
 }
