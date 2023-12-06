@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Coordinates } from "@/app/types/map";
+import { Coordinates } from "@/types/map";
 import Map from ".";
-import Icons from "@/app/components/icons";
+import Icons from "@/components/icons";
 
 export default function MapContainer() {
   const [loc, setLoc] = useState<Coordinates>();

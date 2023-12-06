@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { Coordinates, NaverMap } from "@/app/types/map";
+import { Coordinates, NaverMap } from "@/types/map";
 import { useCallback, useRef } from "react";
 
 const mapId = "mapmapmap";

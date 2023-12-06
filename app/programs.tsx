@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ProgramList from "@/app/components/program/list";
+import ProgramList from "@/components/program/list";
 import ProgramListLoading from "./components/program/list/loading";
 
 export default function Programs() {
