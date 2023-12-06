@@ -1,3 +1,3 @@
 export default function Banner() {
-  return <div className="w-full h-28 bg-primary">banner</div>;
+  return <div className="w-full aspect-[375/105] bg-primary">banner</div>;
 }
