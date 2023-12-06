@@ -14,7 +14,7 @@ export default function Program({ program }: { program: ProgramType }) {
           </div>
           {program.title}
         </div>
-        <div className="bg-primary rounded-full px-4 py-2 absolute right-2 top-2 text-[11px] text-white font-medium">
+        <div className="bg-primary rounded-full px-4 py-1 absolute right-2 top-2 text-[11px] text-white font-medium">
           D-{program["remain-date"]}
         </div>
       </div>

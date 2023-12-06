@@ -19,10 +19,10 @@ export default function SearchResult() {
         <Sheet
           isOpen={true}
           onClose={() => {}}
-          snapPoints={[800, 200]}
+          snapPoints={[800, 100]}
           initialSnap={1}
           mountPoint={ref.current!}
-          className="!absolute !z-[50]"
+          className="!absolute !z-[100]"
         >
           <Sheet.Container className="!bg-background">
             <Sheet.Header />
