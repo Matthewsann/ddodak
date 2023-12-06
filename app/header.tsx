@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Icons from "./components/icons";
 import Logo from "@/../public/logo.svg";
 
@@ -9,9 +10,9 @@ export default function Header() {
           <Logo />
         </div>
         <div className="flex gap-1">
-          <button className="btn btn-ghost btn-circle">
+          <Link href={"/search"} className="btn btn-ghost btn-circle">
             <Icons.Search />
-          </button>
+          </Link>
           <button className="btn btn-ghost btn-circle">
             <Icons.Signout />
           </button>
