@@ -14,7 +14,7 @@ export default function Recommend() {
             서울시 성북구
           </div>
         </div>
-        <button className="btn btn-ghost">
+        <button className="btn btn-ghost stroke-black">
           <div className="font-light text-[11px]">지도로 보기</div>
           <Icons.Map />
         </button>

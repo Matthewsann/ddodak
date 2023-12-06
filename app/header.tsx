@@ -9,7 +9,7 @@ export default function Header() {
         <div className="flex gap-2 items-center">
           <Logo />
         </div>
-        <div className="flex gap-1">
+        <div className="flex gap-1 stroke-black">
           <Link href={"/search"} className="btn btn-ghost btn-circle">
             <Icons.Search />
           </Link>

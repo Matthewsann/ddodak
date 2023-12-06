@@ -18,7 +18,7 @@ export default function Programs() {
           <ProgramList />
         </Suspense>
       </div>
-      <Footer />
+      <Footer selected="programs" />
     </>
   );
 }

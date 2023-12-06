@@ -28,7 +28,7 @@ export default function SearchHeader({
           autoFocus={noFilter}
         />
         <Link className="btn btn-ghost btn-circle" href={"/"}>
-          <Icons.Home className="shrink-0" />
+          <Icons.Search className="shrink-0 stroke-black" />
         </Link>
       </div>
       {!noFilter && (

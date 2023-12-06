@@ -17,7 +17,7 @@ export default function Home() {
           <Programs />
         </div>
       </div>
-      <Footer />
+      <Footer selected="home" />
     </>
   );
 }
