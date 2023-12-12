@@ -20,8 +20,18 @@ export default function Map({ loc }: { loc: Coordinates }) {
       },
     };
     const map = new window.naver.maps.Map(mapId, mapOptions);
+    map.addListener("drag", onBoundChange);
+    map.addListener("pinch", onBoundChange);
     mapRef.current = map;
   }, [loc]);
+
+  const onBoundChange = useCallback(() => {
+    if (!mapRef.current) return;
+    const bounds = mapRef.current.getBounds();
+    const x = bounds.minX() + "," + bounds.maxX();
+    const y = bounds.minY() + "," + bounds.maxY();
+    console.log(x, y);
+  }, []);
 
   return (
     <>

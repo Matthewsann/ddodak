@@ -2,7 +2,7 @@ import Home from "./home.svg";
 import Map from "./map.svg";
 import Tablet from "./tablet.svg";
 import User from "./user.svg";
-import EmojiSmile from "./emoji-smile.svg";
+import Counselor from "./counselor.svg";
 import Crosshair from "./crosshair.svg";
 import GoBack from "./go-back.svg";
 import Filter from "./filter.svg";
@@ -15,7 +15,7 @@ const Icons = {
   Map,
   Tablet,
   User,
-  EmojiSmile,
+  EmojiSmile: Counselor,
   Crosshair,
   GoBack,
   Filter,

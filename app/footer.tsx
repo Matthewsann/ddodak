@@ -7,7 +7,7 @@ const ROUTERS = [
   { icon: <Icons.Map />, text: "지도", route: "/map", key: "map" },
   {
     icon: <Icons.EmojiSmile />,
-    text: "매칭",
+    text: "상담사",
     route: "/matching",
     key: "matching",
   },

@@ -12,7 +12,7 @@ export const authLogin = async ({
   email: string;
   password: string;
 }) => {
-  const result = await fetch("http://localhost:3000/api/auth/login", {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/auth/login`, {
     method: "POST",
     body: JSON.stringify({
       email,
