@@ -21,12 +21,14 @@ export const centerList = async () => {
 export const centerAroundList = async ({
   lat,
   lng,
+  distance,
 }: {
   lat: number;
   lng: number;
+  distance: number;
 }) => {
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}/center/around/list?distance=500&centerLatitude=${lat}&centerLongitude=${lng}`
+    `${process.env.NEXT_PUBLIC_API_HOST}/center/around/list?distance=${distance}&centerLatitude=${lat}&centerLongitude=${lng}`
   );
 
   if (!result.ok) throw new Error("서버 에러");

@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import { Coordinates } from "@/types/map";
 import Map from ".";
 import Icons from "@/components/icons";
+import type { CenterType } from "@/types/center";
 
-export default function MapContainer() {
+export default function MapContainer({
+  setCenters,
+}: {
+  setCenters: React.Dispatch<React.SetStateAction<CenterType[]>>;
+}) {
   const [loc, setLoc] = useState<Coordinates>();
 
   const initLocation = () => {
@@ -20,7 +25,7 @@ export default function MapContainer() {
 
   return (
     <div className="relative w-full h-full">
-      {loc && <Map loc={loc} />}
+      {loc && <Map loc={loc} setCenters={setCenters} />}
       <button
         className="btn btn-circle btn-ghost absolute bottom-4 left-4"
         onClick={() => {

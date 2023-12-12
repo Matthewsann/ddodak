@@ -1,8 +1,9 @@
 import Sheet from "react-modal-sheet";
 import CounselorCard from "../components/counselor/card";
 import { useEffect, useRef, useState } from "react";
+import type { CenterType } from "@/types/center";
 
-export default function SearchResult() {
+export default function SearchResult({ centers }: { centers: CenterType[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -28,8 +29,8 @@ export default function SearchResult() {
             <Sheet.Header />
             <Sheet.Content className="px-5 pb-12">
               <Sheet.Scroller>
-                {[...Array(10)].map((_, i) => (
-                  <CounselorCard key={i} />
+                {centers.map((center, i) => (
+                  <CounselorCard key={i} center={center} />
                 ))}
               </Sheet.Scroller>
             </Sheet.Content>

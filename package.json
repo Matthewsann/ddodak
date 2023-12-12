@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.202",
     "classcat": "^5.0.4",
     "daisyui": "^4.0.4",
+    "lodash": "^4.17.21",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",

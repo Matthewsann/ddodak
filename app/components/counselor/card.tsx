@@ -1,18 +1,24 @@
-export default function Card() {
+import { CenterType } from "@/types/center";
+
+export default function Card({ center }: { center: CenterType }) {
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-24 h-24 rounded bg-black"></div>
+    <div className="flex items-center gap-2 mb-4">
+      <div className="w-24 h-24 rounded bg-black overflow-hidden">
+        <img src={center.profileUrl} className="w-full h-full object-cover" />
+      </div>
       <div>
-        <div className="text-sm font-medium">골든햄스터 상담 센터</div>
+        <div className="text-sm font-medium">{center.name}</div>
         <div className="font-light text-[11px]">
-          <span className="font-medium">2.5km</span> | 성북구 안암동
+          <span className="font-medium">2.5km</span> | {center.shortAddress}
         </div>
-        <div className="flex gap-2 text-xs mt-1">
+        <div className="flex gap-2 text-xs mt-0.5">
           <div className="font-medium">영업중</div>
           <div className="font-light">19:00 영업 종료</div>
         </div>
 
-        <div className="mt-2 text-[13px]">대표 가격 : 50,000원</div>
+        <div className="mt-2 text-[13px]">
+          대표 가격 : {center.price.toLocaleString()}원
+        </div>
         <div className="text-[11px] mt-0.5">후기 99+</div>
       </div>
     </div>
