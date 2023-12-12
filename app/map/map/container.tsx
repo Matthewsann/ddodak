@@ -8,11 +8,13 @@ import type { CenterType } from "@/types/center";
 
 export default function MapContainer({
   setCenters,
+  loc,
+  setLoc,
 }: {
   setCenters: React.Dispatch<React.SetStateAction<CenterType[]>>;
+  loc: Coordinates | undefined;
+  setLoc: React.Dispatch<React.SetStateAction<Coordinates | undefined>>;
 }) {
-  const [loc, setLoc] = useState<Coordinates>();
-
   const initLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLoc([position.coords.longitude, position.coords.latitude]);

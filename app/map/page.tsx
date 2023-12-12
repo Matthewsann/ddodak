@@ -6,10 +6,12 @@ import MapContainer from "./map/container";
 import SearchHeader from "../components/search-header";
 import SearchFilter from "./search-filter";
 import SearchResult from "./search-result";
+import { Coordinates } from "@/types/map";
 
 export default function Map() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [centers, setCenters] = useState<CenterType[]>([]);
+  const [loc, setLoc] = useState<Coordinates>();
 
   return (
     <>
@@ -18,9 +20,9 @@ export default function Map() {
           <SearchHeader openFilter={() => setIsFilterOpen(true)} />
         </div>
         <div className="w-full h-full bg-green-400">
-          <MapContainer setCenters={setCenters} />
+          <MapContainer setCenters={setCenters} loc={loc} setLoc={setLoc} />
         </div>
-        <SearchResult centers={centers} />
+        {loc && <SearchResult centers={centers} loc={loc} />}
       </div>
       {isFilterOpen && <SearchFilter close={() => setIsFilterOpen(false)} />}
     </>

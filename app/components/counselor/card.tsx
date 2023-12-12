@@ -1,6 +1,14 @@
 import { CenterType } from "@/types/center";
+import { Coordinates } from "@/types/map";
+import { getDistanceKm } from "@/utils/latlng-to-meter";
 
-export default function Card({ center }: { center: CenterType }) {
+export default function Card({
+  center,
+  distance,
+}: {
+  center: CenterType;
+  distance: number;
+}) {
   return (
     <div className="flex items-center gap-2 mb-4">
       <div className="w-24 h-24 rounded bg-black overflow-hidden">
@@ -9,7 +17,11 @@ export default function Card({ center }: { center: CenterType }) {
       <div>
         <div className="text-sm font-medium">{center.name}</div>
         <div className="font-light text-[11px]">
-          <span className="font-medium">2.5km</span> | {center.shortAddress}
+          <span className="font-medium">
+            {distance.toLocaleString()}
+            km
+          </span>{" "}
+          | {center.shortAddress}
         </div>
         <div className="flex gap-2 text-xs mt-0.5">
           <div className="font-medium">영업중</div>
