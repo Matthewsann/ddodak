@@ -9,6 +9,7 @@ import Filter from "./filter.svg";
 import GPS from "./gps.svg";
 import Search from "./search.svg";
 import Signout from "./signout.svg";
+import Heart from "./heart.svg";
 
 const Icons = {
   Home,
@@ -22,5 +23,6 @@ const Icons = {
   GPS,
   Search,
   Signout,
+  Heart,
 };
 export default Icons;

@@ -37,24 +37,30 @@ export default function SearchResult({
             <Sheet.Header />
             <Sheet.Content className="px-5 pb-12">
               <Sheet.Scroller>
-                {centers
-                  .sort(
-                    (a, b) =>
-                      getDistanceKm(loc[1], loc[0], a.latitude, a.longitude) -
-                      getDistanceKm(loc[1], loc[0], b.latitude, b.longitude)
-                  )
-                  .map((center, i) => (
-                    <CounselorCard
-                      key={i}
-                      center={center}
-                      distance={getDistanceKm(
-                        loc[1],
-                        loc[0],
-                        center.latitude,
-                        center.longitude
-                      )}
-                    />
-                  ))}
+                {centers.length > 0 ? (
+                  centers
+                    .sort(
+                      (a, b) =>
+                        getDistanceKm(loc[1], loc[0], a.latitude, a.longitude) -
+                        getDistanceKm(loc[1], loc[0], b.latitude, b.longitude)
+                    )
+                    .map((center, i) => (
+                      <CounselorCard
+                        key={i}
+                        center={center}
+                        distance={getDistanceKm(
+                          loc[1],
+                          loc[0],
+                          center.latitude,
+                          center.longitude
+                        )}
+                      />
+                    ))
+                ) : (
+                  <div className="text-center text-gray-500 py-12">
+                    검색 결과가 없습니다.
+                  </div>
+                )}
               </Sheet.Scroller>
             </Sheet.Content>
           </Sheet.Container>

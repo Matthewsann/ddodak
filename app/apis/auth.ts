@@ -18,6 +18,9 @@ export const authLogin = async ({
       email,
       password,
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 
   if (!result.ok) throw new Error("서버 에러");
