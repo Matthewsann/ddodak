@@ -66,17 +66,19 @@ export default function Home() {
               </Link>
             </li>
           ))}
-          <li
-            className="w-full flex justify-end"
-            onClick={() => {
-              setEmail(null);
-            }}
-          >
-            <button className="btn btn-ghost !p-0 font-light text-xs">
-              <Icons.Signout className="w-6 stroke-black" />
-              로그아웃
-            </button>
-          </li>
+          {email && (
+            <li
+              className="w-full flex justify-end"
+              onClick={() => {
+                setEmail(null);
+              }}
+            >
+              <button className="btn btn-ghost !p-0 font-light text-xs">
+                <Icons.Signout className="w-6 stroke-black" />
+                로그아웃
+              </button>
+            </li>
+          )}
         </ul>
       </div>
       <Nav selected={"mypage"} />
