@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import ProgramList from "./list";
 import ProgramTags from "./tags";
-import { Footer } from "@/footer";
+import { Nav } from "@/navbar";
 import { Suspense } from "react";
 import ProgramListLoading from "./loading";
 
@@ -18,7 +18,7 @@ export default function Programs() {
           <ProgramList />
         </Suspense>
       </div>
-      <Footer selected="programs" />
+      <Nav selected="programs" />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "./footer";
 
 export const metadata: Metadata = {
   title: "상담플러스",
@@ -16,6 +17,7 @@ export default function RootLayout({
       <body className="w-full h-[100dvh] flex items-center justify-center bg-primary">
         <main className="relative w-full max-w-md h-[100dvh] max-h-[100dvh] bg-background overflow-x-hidden overflow-y-scroll no-scrollbar">
           {children}
+          <Footer />
         </main>
       </body>
     </html>

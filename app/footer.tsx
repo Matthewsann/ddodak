@@ -1,45 +1,35 @@
-import Link from "next/link";
-import Icons from "./components/icons";
-import cc from "classcat";
+import Logo from "@/../public/logo.svg";
 
-const ROUTERS = [
-  { icon: <Icons.Home />, text: "홈", route: "/", key: "home" },
-  { icon: <Icons.Map />, text: "지도", route: "/map", key: "map" },
-  {
-    icon: <Icons.EmojiSmile />,
-    text: "상담사",
-    route: "/matching",
-    key: "matching",
-  },
-  {
-    icon: <Icons.Tablet />,
-    text: "프로그램",
-    route: "/programs",
-    key: "programs",
-  },
-  { icon: <Icons.User />, text: "마이", route: "/mypage", key: "mypage" },
-];
-
-export const Footer = ({ selected }: { selected: string }) => (
-  <div className="flex justify-center fixed inset-x-0 bottom-0">
-    <footer className="w-full max-w-md left-0 right-0 bottom-0 px-4 pb-5">
-      <div className="w-full grid grid-cols-5 py-2 px-7 rounded-full shadow-float bg-background">
-        {ROUTERS.map((item, index) => (
-          <Link
-            key={index}
-            href={item.route}
-            className={cc([
-              "flex flex-col items-center justify-center relative",
-              selected === item.key
-                ? "text-primary stroke-primary"
-                : "text-black stroke-black",
-            ])}
-          >
-            <div className="w-6 h-6 z-[1]">{item.icon}</div>
-            <div className="text-[11px] font-medium z-[1]">{item.text}</div>
-          </Link>
-        ))}
+export default function Footer() {
+  return (
+    <footer className="bg-black/10 text-black/60 flex flex-col items-center pt-6 pb-28 px-7 gap-4">
+      <div className="flex items-center gap-5 text-[11px] font-medium">
+        <div>회사 소개</div>
+        <div className="w-px h-4 bg-black/60" />
+        <div>이용 안내</div>
+        <div className="w-px h-4 bg-black/60" />
+        <div>FAQ</div>
+      </div>
+      <div className="flex items-center gap-5 text-[11px] font-medium">
+        <div>이용약관</div>
+        <div className="w-px h-4 bg-black/60" />
+        <div>개인정보처리방침</div>
+        <div className="w-px h-4 bg-black/60" />
+        <div>위치정보서비스 이용약관</div>
+      </div>
+      <div className="w-full flex flex-col gap-4">
+        <Logo />
+        <div className="text-[10px] font-medium leading-5">
+          (주) 또닥또닥
+          <br />
+          서울특별시 성북구 고려대로24길 32 5층
+          <br />
+          통신판매업신고: <br />
+          전화번호: 010-8934-7286
+          <br />
+          고객센터: cs@sangdamplus.com | 제휴문의: contact@sangdamplus.com
+        </div>
       </div>
     </footer>
-  </div>
-);
+  );
+}

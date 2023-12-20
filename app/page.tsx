@@ -1,6 +1,6 @@
 import Banner from "./banner";
 import CounselorCard from "./counselor-card";
-import { Footer } from "./footer";
+import { Nav } from "./navbar";
 import Header from "./header";
 import Programs from "./programs";
 import Recommend from "./recommend";
@@ -17,7 +17,7 @@ export default function Home() {
           <Programs />
         </div>
       </div>
-      <Footer selected="home" />
+      <Nav selected="home" />
     </>
   );
 }
