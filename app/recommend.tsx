@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Icons from "@/components/icons";
-import CounselorList from "@//components/counselor/list";
-import CounselorListLoading from "./components/counselor/list/loading";
+import CenterList from "@//components/center/list";
+import CenterListLoading from "./components/center/list/loading";
 
 export default function Recommend() {
   return (
@@ -10,7 +10,7 @@ export default function Recommend() {
         <div className="flex flex-col gap-0.5">
           <div className="font-bold text-sm">내 주변 상담 센터</div>
           <div className="flex items-center text-xs font-light gap-2">
-            <Icons.GPS />
+            <Icons.GPS className="w-5 h-5 fill-black" />
             서울시 성북구
           </div>
         </div>
@@ -21,8 +21,8 @@ export default function Recommend() {
       </div>
       <div className="mt-2 overflow-x-auto no-scrollbar">
         <div className="px-7 w-max">
-          <Suspense fallback={<CounselorListLoading />}>
-            <CounselorList />
+          <Suspense fallback={<CenterListLoading />}>
+            <CenterList />
           </Suspense>
         </div>
       </div>

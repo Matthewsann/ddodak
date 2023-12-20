@@ -1,6 +1,4 @@
 import { CenterType } from "@/types/center";
-import { Coordinates } from "@/types/map";
-import { getDistanceKm } from "@/utils/latlng-to-meter";
 
 export default function Card({
   center,
