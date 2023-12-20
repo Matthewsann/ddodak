@@ -17,6 +17,7 @@ const MENU_ITEMS = [
   {
     name: "1:1 문의하기",
     href: "/login",
+    channel: true,
   },
   {
     name: "공유하기",
@@ -49,8 +50,14 @@ export default function Home() {
       <ul className="divide-y px-8">
         {MENU_ITEMS.map((item, i) => (
           <li key={i} className="font-medium text-sm">
-            <Link href={item.href} className="py-6 block">
+            <Link href={item.href} className="py-6 w-full flex justify-between">
               {item.name}
+              {item.channel && (
+                <div className="badge badge-secondary text-[10px] font-medium gap-2">
+                  <Icons.Chat />
+                  채널톡 문의
+                </div>
+              )}
             </Link>
           </li>
         ))}

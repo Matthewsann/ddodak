@@ -10,6 +10,7 @@ import GPS from "./gps.svg";
 import Search from "./search.svg";
 import Signout from "./signout.svg";
 import Heart from "./heart.svg";
+import Chat from "./chat.svg";
 
 const Icons = {
   Home,
@@ -24,5 +25,6 @@ const Icons = {
   Search,
   Signout,
   Heart,
+  Chat,
 };
 export default Icons;
