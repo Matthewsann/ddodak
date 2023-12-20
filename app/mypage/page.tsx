@@ -53,7 +53,7 @@ export default function Home() {
             <Link href={item.href} className="py-6 w-full flex justify-between">
               {item.name}
               {item.channel && (
-                <div className="badge badge-secondary text-[10px] font-medium gap-2">
+                <div className="badge badge-secondary text-[10px] font-medium gap-2 !h-auto !py-1 px-3">
                   <Icons.Chat />
                   채널톡 문의
                 </div>
