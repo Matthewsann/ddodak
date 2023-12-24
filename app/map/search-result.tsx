@@ -1,9 +1,10 @@
-import Sheet from "react-modal-sheet";
-import CounselorCard from "../components/counselor/card";
+import Sheet, { SheetRef } from "react-modal-sheet";
+import CenterCard from "../components/center/card";
 import { useEffect, useRef, useState } from "react";
 import type { CenterType } from "@/types/center";
 import { Coordinates } from "@/types/map";
 import { getDistanceKm } from "@/utils/latlng-to-meter";
+import Icons from "@/components/icons";
 
 export default function SearchResult({
   centers,
@@ -12,25 +13,37 @@ export default function SearchResult({
   centers: CenterType[];
   loc: Coordinates;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
+  const sheet = useRef<SheetRef>(null);
   const [mounted, setMounted] = useState(false);
+  const snapTo = (i: number) => sheet.current?.snapTo(i);
 
   useEffect(() => {
-    if (ref.current) setMounted(true);
+    if (container.current) setMounted(true);
   }, []);
 
   return (
     <div
-      ref={ref}
-      className="absolute bottom-0 left-0 right-0 pointer-events-none h-full"
+      ref={container}
+      className="absolute bottom-0 left-0 right-0 pointer-events-none h-full flex justify-center"
     >
+      <button
+        className="absolute bottom-20 btn btn-primary btn-outline z-[99] bg-white rounded-full !text-black text-[13px] font-normal border-2 !border-primary pointer-events-auto"
+        onClick={() => {
+          snapTo(0);
+        }}
+      >
+        <Icons.Hamburger className="w-4 h-4" />
+        목록 보기
+      </button>
       {mounted && (
         <Sheet
+          ref={sheet}
           isOpen={true}
           onClose={() => {}}
-          snapPoints={[800, 100]}
+          snapPoints={[800, 60]}
           initialSnap={1}
-          mountPoint={ref.current!}
+          mountPoint={container.current!}
           className="!absolute !z-[100]"
         >
           <Sheet.Container className="!bg-background">
@@ -45,7 +58,7 @@ export default function SearchResult({
                         getDistanceKm(loc[1], loc[0], b.latitude, b.longitude)
                     )
                     .map((center, i) => (
-                      <CounselorCard
+                      <CenterCard
                         key={i}
                         center={center}
                         distance={getDistanceKm(

@@ -1,10 +1,9 @@
-"use client";
-
-import { useUserStore } from "@/store/user-store";
 import Link from "next/link";
 import Profile from "./profile";
 import Icons from "@/components/icons";
 import { Nav } from "@/navbar";
+import { userInfo } from "@/apis/auth";
+import { cookies } from "next/headers";
 
 const MENU_ITEMS = [
   {
@@ -26,14 +25,23 @@ const MENU_ITEMS = [
   },
 ];
 
-export default function Home() {
-  const { email, setEmail } = useUserStore();
+const getData = async () => {
+  try {
+    const res = await userInfo();
+    return res;
+  } catch (e) {
+    return null;
+  }
+};
+
+export default async function Home() {
+  const user = await getData();
 
   return (
     <>
       <div className="w-full py-16">
-        {email ? (
-          <Profile />
+        {user ? (
+          <Profile user={user} />
         ) : (
           <div className="flex flex-col items-center">
             <div className="font-medium text-primary">로그인이 필요합니다.</div>
@@ -66,11 +74,11 @@ export default function Home() {
               </Link>
             </li>
           ))}
-          {email && (
+          {user && (
             <li
               className="w-full flex justify-end"
               onClick={() => {
-                setEmail(null);
+                cookies().delete("token");
               }}
             >
               <button className="btn btn-ghost !p-0 font-light text-xs">

@@ -11,6 +11,7 @@ import Search from "./search.svg";
 import Signout from "./signout.svg";
 import Heart from "./heart.svg";
 import Chat from "./chat.svg";
+import Hamburger from "./hamburger.svg";
 
 const Icons = {
   Home,
@@ -26,5 +27,6 @@ const Icons = {
   Signout,
   Heart,
   Chat,
+  Hamburger,
 };
 export default Icons;

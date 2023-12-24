@@ -1,27 +1,21 @@
-"use client";
-
 import Icons from "@/components/icons";
-import { useUserStore } from "@/store/user-store";
+import { UserInfoType } from "@/types/user";
 
-export default function Profile() {
-  const { email } = useUserStore();
+export default function Profile({ user }: { user: UserInfoType }) {
   return (
     <div>
       <div className="flex w-full px-8 gap-6 items-center">
         <div className="w-24 h-24 rounded-full overflow-hidden shrink-0">
-          <img
-            src="https://via.placeholder.com/96"
-            className="w-full h-full object-cover"
-          />
+          <img src={user.profileUrl} className="w-full h-full object-cover" />
         </div>
         <div className="w-full">
           <div className="font-bold flex items-center justify-between w-full">
-            이소윤
+            {user.name}
             <button className="btn btn-secondary btn-xs rounded-full !text-white !font-medium px-3">
               수정
             </button>
           </div>
-          <div className="text-xs font-light">{email}</div>
+          <div className="text-xs font-light">{user.email}</div>
         </div>
       </div>
 

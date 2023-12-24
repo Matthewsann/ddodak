@@ -1,3 +1,5 @@
+import { UserInfoType } from "@/types/user";
+
 interface AuthLoginResponse {
   success: boolean;
   code: number;
@@ -26,6 +28,24 @@ export const authLogin = async ({
   if (!result.ok) throw new Error("서버 에러");
 
   const data: AuthLoginResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};
+
+interface UserInfoResponse {
+  success: boolean;
+  code: number;
+  message: string;
+  data: UserInfoType;
+}
+
+export const userInfo = async () => {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/user/info`);
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: UserInfoResponse = await result.json();
   if (!data.success) throw new Error(data.message);
 
   return data.data;
