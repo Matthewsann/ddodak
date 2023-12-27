@@ -1,5 +1,6 @@
 import type { CenterType } from "@/types/center";
 import { ContactCode, GenderCode, ReligionCode } from "@/types/codes";
+import { FilterType } from "@/types/counselor";
 
 interface CenterListResponse {
   success: boolean;
@@ -40,22 +41,11 @@ export const centerAroundList = async ({
   return data.data;
 };
 
-export const centerMapList = async (params: {
-  minLatitude: number;
-  maxLatitude: number;
-  minLongitude: number;
-  maxLongitude: number;
-
-  minPrice?: number;
-  maxPrice?: number;
-  contactType?: ContactCode;
-  gender?: GenderCode;
-  religion?: ReligionCode;
-  minAge?: number;
-  maxAge?: number;
-
-  keywords: number[];
-}) => {
+export const centerMapList = async (
+  params: FilterType & {
+    keywords: number[];
+  }
+) => {
   const paramsWithKeywords = {
     ...params,
     keywords: params.keywords?.join(","),

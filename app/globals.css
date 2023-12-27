@@ -94,4 +94,13 @@
   .skeleton {
     @apply bg-gray-200 rounded animate-pulse;
   }
+  .thumb::-webkit-slider-thumb{
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: white;
+    filter: drop-shadow(1px 1px 4px rgba(9, 9, 9, 0.20));
+    appearance: none;
+    pointer-events: auto;
+  }
 }

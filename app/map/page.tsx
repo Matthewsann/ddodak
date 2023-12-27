@@ -8,7 +8,7 @@ import SearchFilter from "./search-filter";
 import SearchResult from "./search-result";
 import { Coordinates } from "@/types/map";
 import { keywordList } from "@/apis/counselor";
-import { KeywordType } from "@/types/counselor";
+import { FilterType, KeywordType } from "@/types/counselor";
 import { centerMapList } from "@/apis/center";
 
 export default function Map() {
@@ -29,6 +29,22 @@ export default function Map() {
 
   const [keywords, setKeywords] = useState<KeywordType[]>([]);
   const [selectedKeywords, setSelectedKeywords] = useState<number[]>([]);
+  const [filter, setFilter] = useState<FilterType>({
+    maxLatitude: 0,
+    maxLongitude: 0,
+    minLatitude: 0,
+    minLongitude: 0,
+
+    contactType: [],
+    gender: [],
+    religion: [],
+
+    minPrice: 0,
+    maxPrice: 200000,
+
+    minAge: 0,
+    maxAge: 100,
+  });
 
   const initLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -40,22 +56,23 @@ export default function Map() {
     initLocation();
   }, []);
 
-  const getFilter = useCallback(async () => {
+  const getKeywords = useCallback(async () => {
     const result = await keywordList();
     setKeywords(result);
   }, []);
 
   useEffect(() => {
-    getFilter();
+    getKeywords();
   }, []);
 
   const updateCenters = useCallback(async () => {
     const centers = await centerMapList({
       ...bound,
       keywords: selectedKeywords,
+      ...filter,
     });
     setCenters(centers);
-  }, [bound, selectedKeywords]);
+  }, [bound, selectedKeywords, filter]);
 
   useEffect(() => {
     updateCenters();
@@ -93,9 +110,11 @@ export default function Map() {
       {isFilterOpen && (
         <SearchFilter
           close={() => setIsFilterOpen(false)}
-          filters={keywords}
-          selectedFilters={selectedKeywords}
-          selectFilter={setSelectedKeywords}
+          filter={filter}
+          setFilter={setFilter}
+          keywords={keywords}
+          selectedKeywords={selectedKeywords}
+          selectKeyword={setSelectedKeywords}
         />
       )}
     </>

@@ -12,10 +12,8 @@ export default function FilterItem({
   return (
     <button
       className={cc([
-        "rounded-full text-[11px] px-3 py-1 font-medium",
-        checked
-          ? "bg-primary text-background"
-          : "border text-black border-primary",
+        "rounded-full text-[11px] px-3 h-6 flex items-center font-medium border border-primary",
+        checked ? "bg-primary text-background" : "text-black",
       ])}
       onClick={toggle}
     >
