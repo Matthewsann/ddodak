@@ -2,9 +2,11 @@ import cc from "classcat";
 
 export default function FilterItem({
   checked,
+  toggle,
   children,
 }: {
   checked: boolean;
+  toggle: () => void;
   children: React.ReactNode;
 }) {
   return (
@@ -15,6 +17,7 @@ export default function FilterItem({
           ? "bg-primary text-background"
           : "border text-black border-primary",
       ])}
+      onClick={toggle}
     >
       {children}
     </button>

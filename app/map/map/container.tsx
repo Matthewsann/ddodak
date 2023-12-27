@@ -7,23 +7,24 @@ import Icons from "@/components/icons";
 import type { CenterType } from "@/types/center";
 
 export default function MapContainer({
-  setCenters,
+  centers,
+  setBound,
   loc,
 }: {
-  setCenters: React.Dispatch<React.SetStateAction<CenterType[]>>;
+  centers: CenterType[];
+  setBound: React.Dispatch<
+    React.SetStateAction<{
+      minLatitude: number;
+      maxLatitude: number;
+      minLongitude: number;
+      maxLongitude: number;
+    }>
+  >;
   loc: Coordinates | undefined;
 }) {
   return (
     <div className="relative w-full h-full">
-      {loc && <Map loc={loc} setCenters={setCenters} />}
-      <button
-        className="btn btn-circle btn-ghost absolute bottom-4 left-4"
-        onClick={() => {
-          /* TODO: 현재 위치에서 검색 */
-        }}
-      >
-        <Icons.GPS />
-      </button>
+      {loc && <Map centers={centers} loc={loc} setBound={setBound} />}
     </div>
   );
 }

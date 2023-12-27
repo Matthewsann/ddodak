@@ -1,15 +1,10 @@
+import { KeywordType } from "@/types/counselor";
+
 interface KeywordListResponse {
   success: boolean;
   code: number;
   message: string;
-  data: {
-    id: 1;
-    keyWordGroup: {
-      code: string;
-      title: string;
-    };
-    keyword: string;
-  }[];
+  data: KeywordType[];
 }
 
 export const keywordList = async () => {

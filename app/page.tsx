@@ -4,6 +4,7 @@ import { Nav } from "./navbar";
 import Header from "./header";
 import Programs from "./programs";
 import Recommend from "./recommend";
+import Footer from "./footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         </div>
       </div>
       <Nav selected="home" />
+      <Footer />
     </>
   );
 }

@@ -3,13 +3,22 @@
 import Link from "next/link";
 import Icons from "./icons";
 import { useRouter } from "next/navigation";
+import { KeywordType } from "@/types/counselor";
+import { filter } from "lodash";
+import cc from "classcat";
 
 export default function SearchHeader({
   openFilter,
   noFilter,
+  filters,
+  selectedKeywords,
+  selectKeyword,
 }: {
   openFilter?: () => void;
   noFilter?: boolean;
+  filters: KeywordType[];
+  selectedKeywords: number[];
+  selectKeyword: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
   const router = useRouter();
 
@@ -34,11 +43,33 @@ export default function SearchHeader({
       {!noFilter && (
         <div className="flex items-center">
           <button
-            className="btn btn-ghost btn-circle"
+            className="btn btn-ghost btn-circle shrink-0"
             onClick={() => openFilter && openFilter()}
           >
             <Icons.Filter className="shrink-0" />
           </button>
+
+          <div className="w-full overflow-x-auto flex gap-2 flex-nowrap no-scrollbar">
+            {filters.map((filter) => (
+              <button
+                key={filter.id}
+                className={cc([
+                  "whitespace-nowrap font-medium text-[11px] px-2 border-primary rounded-full border h-6 flex items-center",
+                  selectedKeywords.includes(filter.id) &&
+                    "bg-primary text-white",
+                ])}
+                onClick={() => {
+                  selectKeyword((filters) =>
+                    filters.includes(filter.id)
+                      ? filters.filter((f) => f !== filter.id)
+                      : [...filters, filter.id]
+                  );
+                }}
+              >
+                {filter.keyword}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
