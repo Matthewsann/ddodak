@@ -9,9 +9,11 @@ import Icons from "@/components/icons";
 export default function SearchResult({
   centers,
   loc,
+  renewLoc,
 }: {
   centers: CenterType[];
   loc: Coordinates;
+  renewLoc: () => void;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const sheet = useRef<SheetRef>(null);
@@ -46,7 +48,13 @@ export default function SearchResult({
           mountPoint={container.current!}
           className="!absolute !z-[100]"
         >
-          <Sheet.Container className="!bg-background">
+          <Sheet.Container className="!bg-background relative">
+            <button
+              className="absolute -top-16 left-4 btn btn-ghost btn-circle"
+              onClick={() => renewLoc()}
+            >
+              <Icons.GPS className="w-5 h-5 fill-black" />
+            </button>
             <Sheet.Header />
             <Sheet.Content className="px-5 pb-12">
               <Sheet.Scroller>

@@ -39,6 +39,11 @@ export default function Map({
     setMapInstance(map);
   }, [loc]);
 
+  useEffect(() => {
+    if (!mapInstance) return;
+    mapInstance.setCenter(new window.naver.maps.LatLng(loc));
+  }, [loc]);
+
   const onBoundChange = useCallback(
     throttle(() => {
       if (!mapRef.current) return;
