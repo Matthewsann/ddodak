@@ -42,8 +42,8 @@ export default function Map() {
     minPrice: 0,
     maxPrice: 200000,
 
-    minAge: 0,
-    maxAge: 100,
+    minAge: 20,
+    maxAge: 60,
   });
 
   const initLocation = () => {

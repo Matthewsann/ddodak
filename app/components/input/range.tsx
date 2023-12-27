@@ -6,6 +6,10 @@ export default function RangeInput({
   max,
   setMin,
   setMax,
+  minText,
+  maxText,
+  minValueText,
+  maxValueText,
   step,
   ...props
 }: {
@@ -14,6 +18,10 @@ export default function RangeInput({
   max: number;
   setMin: (min: number) => void;
   setMax: (max: number) => void;
+  minText: string;
+  maxText: string;
+  minValueText: string;
+  maxValueText: string;
   step?: number;
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
@@ -61,7 +69,7 @@ export default function RangeInput({
                 left: `${((min - range[0]) / (range[1] - range[0])) * 100}%`,
               }}
             >
-              {min / 10000}만 원
+              {minValueText}
             </div>
           )}
           {max < range[1] && (
@@ -71,15 +79,15 @@ export default function RangeInput({
                 left: `${((max - range[0]) / (range[1] - range[0])) * 100}%`,
               }}
             >
-              {max / 10000}만 원
+              {maxValueText}
             </div>
           )}
         </div>
 
         <div className="grid grid-cols-[1fr_1px_1fr] w-full items-center justify-between">
-          <div>최소</div>
+          <div>{minText}</div>
           <div className="h-3 w-px bg-[#c8c8c8] -translate-y-[19px]" />
-          <div className="text-right">최대</div>
+          <div className="text-right">{maxText}</div>
         </div>
       </div>
     </div>
