@@ -19,9 +19,11 @@ export default function SearchResult({
   const sheet = useRef<SheetRef>(null);
   const [mounted, setMounted] = useState(false);
   const snapTo = (i: number) => sheet.current?.snapTo(i);
+  const [height, setHeight] = useState(900);
 
   useEffect(() => {
     if (container.current) setMounted(true);
+    setHeight(window.innerHeight);
   }, []);
 
   return (
@@ -43,14 +45,14 @@ export default function SearchResult({
           ref={sheet}
           isOpen={true}
           onClose={() => {}}
-          snapPoints={[800, 60]}
+          snapPoints={[height - 152, 60]}
           initialSnap={1}
           mountPoint={container.current!}
           className="!absolute !z-[100]"
         >
           <Sheet.Container className="!bg-background relative">
             <button
-              className="absolute -top-16 left-4 btn btn-ghost btn-circle"
+              className="absolute -top-12 left-2 btn btn-ghost btn-circle"
               onClick={() => renewLoc()}
             >
               <Icons.GPS className="w-5 h-5 fill-black" />
