@@ -13,11 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2       # Checkout the code
       - run: npm install -g pnpm@6.14.5 # Install pnpm
-      - run: pnpm i            #install dependencies
       - run: mkdir /app
       - run: cd /app
       - run: touch .env
       - run: echo "${{ secrets.APPLICATION_ENV }}" > ./env
+      - run: pnpm install
       - run: pnpm run build
       - name: Upload Next build          # Upload the artifact
         uses: actions/upload-artifact@v2
