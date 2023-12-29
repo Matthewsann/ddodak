@@ -1,7 +1,7 @@
 FROM node:18-alpine
 
-RUN mkdir -p /data/sangdamplus/next-dev
-WORKDIR /data/sangdamplus/next-dev
+RUN mkdir -p /app
+WORKDIR /app
 
 COPY ./ ./
 COPY ./.env.local ./.env
