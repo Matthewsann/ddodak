@@ -12,7 +12,7 @@ export default function FilterItem({
   return (
     <button
       className={cc([
-        "rounded-full text-[11px] px-3 h-6 flex items-center font-medium border border-primary",
+        "item-button",
         checked ? "bg-primary text-background" : "text-black",
       ])}
       onClick={toggle}

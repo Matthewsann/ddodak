@@ -3,7 +3,7 @@ import SearchHeader from "@/components/search-header";
 export default function Search() {
   return (
     <div className="w-full flex flex-col h-[100dvh]">
-      <SearchHeader noFilter />
+      <SearchHeader />
       <div className="text-[11px] font-medium text-black/40 px-7 mt-2">
         최근 검색어
       </div>

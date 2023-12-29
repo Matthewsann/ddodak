@@ -7,6 +7,7 @@ import RangeInput from "@/components/input/range";
 import { CONTACT, GENDERS, RELIGIONS } from "@/constants/filter";
 import { useState } from "react";
 import Icons from "@/components/icons";
+import { ContactFilter, GenderFilter, PriceFilter } from "./filters";
 
 export default function SearchFilter({
   close,
@@ -38,96 +39,15 @@ export default function SearchFilter({
       <hr className="border-primary mx-6 mb-5" />
       <ul className="flex flex-col px-6 gap-12">
         <li>
-          <FilterTitle title="상담 방식" duplicate />
-          <div className="flex gap-2 mt-4">
-            {CONTACT.map((f, key) => (
-              <FilterItem
-                key={key}
-                checked={pFilter.contactType.includes(f.key)}
-                toggle={() => {
-                  setPFilter((pFilter) => ({
-                    ...pFilter,
-                    contactType: pFilter.contactType.includes(f.key)
-                      ? pFilter.contactType.filter((type) => type !== f.key)
-                      : [...pFilter.contactType, f.key],
-                  }));
-                }}
-              >
-                {f.value}
-              </FilterItem>
-            ))}
-          </div>
+          <ContactFilter filter={pFilter} setFilter={setPFilter} />
         </li>
-
         <li>
-          <FilterTitle title="상담 가격" />
-          <div className="w-full text-right text-primary text-[11px] font-medium">
-            {pFilter.minPrice / 10000} - {pFilter.maxPrice / 10000}만 원
-          </div>
-          <RangeInput
-            className="mt-4"
-            range={[0, 200000]}
-            min={pFilter.minPrice}
-            max={pFilter.maxPrice}
-            minText={"최소"}
-            maxText={"최대"}
-            minValueText={`${pFilter.minPrice / 10000}만 원`}
-            maxValueText={`${pFilter.maxPrice / 10000}만 원`}
-            setMin={(min) =>
-              setPFilter((pFilter) => ({ ...pFilter, minPrice: min }))
-            }
-            setMax={(max) =>
-              setPFilter((pFilter) => ({ ...pFilter, maxPrice: max }))
-            }
-            step={10000}
-          />
+          <PriceFilter filter={pFilter} setFilter={setPFilter} />
         </li>
-
         <li>
-          <FilterTitle title="성별" duplicate />
-          <div className="flex gap-2 mt-4">
-            {GENDERS.map((f, key) => (
-              <FilterItem
-                key={key}
-                checked={pFilter.gender.includes(f.key)}
-                toggle={() => {
-                  setPFilter(() => ({
-                    ...pFilter,
-                    gender: pFilter.gender.includes(f.key)
-                      ? pFilter.gender.filter((type) => type !== f.key)
-                      : [...pFilter.gender, f.key],
-                  }));
-                }}
-              >
-                {f.value}
-              </FilterItem>
-            ))}
-          </div>
+          <GenderFilter filter={pFilter} setFilter={setPFilter} />
         </li>
-
         <li>
-          <FilterTitle title="연령" />
-          <div className="w-full text-right text-primary text-[11px] font-medium">
-            {pFilter.minAge} -{" "}
-            {pFilter.maxAge < 60 ? `${pFilter.maxAge}세` : "60대 이상"}
-          </div>
-          <RangeInput
-            className="mt-4"
-            range={[20, 60]}
-            min={pFilter.minAge}
-            max={pFilter.maxAge}
-            minText={"20대"}
-            maxText={"60대 이상"}
-            minValueText={`${pFilter.minAge}세`}
-            maxValueText={`${pFilter.maxAge}세`}
-            setMin={(min) =>
-              setPFilter((pFilter) => ({ ...pFilter, minAge: min }))
-            }
-            setMax={(max) =>
-              setPFilter((pFilter) => ({ ...pFilter, maxAge: max }))
-            }
-            step={1}
-          />
         </li>
 
         <li>

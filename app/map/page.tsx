@@ -95,9 +95,8 @@ export default function Map() {
         <div className="shadow z-10">
           <SearchHeader
             openFilter={() => setIsFilterOpen(true)}
-            filters={keywords}
-            selectedKeywords={selectedKeywords}
-            selectKeyword={setSelectedKeywords}
+            filter={filter}
+            setFilter={setFilter}
           />
         </div>
         <div className="w-full h-full bg-green-400">

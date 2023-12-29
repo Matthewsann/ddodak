@@ -94,7 +94,13 @@
   .skeleton {
     @apply bg-gray-200 rounded animate-pulse;
   }
-  .thumb::-webkit-slider-thumb{
+  .item-button {
+    @apply rounded-full text-[11px] px-3 h-6 flex items-center font-medium border border-primary;
+  }
+  .item-button-selected {
+    @apply item-button bg-primary text-white;
+  }
+  .thumb::-webkit-slider-thumb {
     height: 18px;
     width: 18px;
     border-radius: 50%;
