@@ -14,11 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2       # Checkout the code
       - run: npm ci            #install dependencies
-      - run: |
-        cd /data/sangdamplus/next-dev
-        touch .env
-        echo "${{ secrets.APPLICATION_ENV }}" > ./env
-        npm run build
+      - run: cd /data/sangdamplus/next-dev
+      - run: touch .env
+      - run: echo "${{ secrets.APPLICATION_ENV }}" > ./env
+      - run: npm run build
       - name: Upload Next build          # Upload the artifact
         uses: actions/upload-artifact@v2
         with:
