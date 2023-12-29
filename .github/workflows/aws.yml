@@ -52,8 +52,8 @@ jobs:
           # 도커 작업
           script: |
             cd /data/sangdamplus/next-dev
-            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker stop ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker run -d --log-driver=syslog -p 3000:10100 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker rm $(docker ps --filter 'status=exited' -a -q)
             docker image prune -a -f
