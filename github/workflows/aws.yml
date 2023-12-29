@@ -1,0 +1,58 @@
+name: Build & Publish
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  next-build:
+    if: ${{ github.event_name == 'workflow_dispatch' }}       # Run only if triggered manually
+    runs-on: ubuntu-latest
+    container: node:lts          # Use node LTS container version, same as Dockerfile base image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2       # Checkout the code
+      - run: npm ci            #install dependencies
+      - run: |
+        cd /data/sangdamplus/next-dev
+        touch .env
+        echo "${{ secrets.APPLICATION_ENV }}" > ./env
+        npm run build
+      - name: Upload Next build          # Upload the artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: |
+            .next
+            public
+          retention-days: 7         # artifact retention duration, can be upto 30 days
+  docker-push:
+    needs: next-build        # Job depends on next-build(above) job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download next build       # Download the above uploaded artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+      - name: Docker build
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
+          docker build -t app .
+          docker tag app ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWS_HOST }} # EC2 인스턴스 퍼블릭 DNS
+          username: sangdam
+          key: ${{ secrets.EC2_SSH_KEY }} # pem 키
+          # 도커 작업
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+            docker stop $(docker ps -a -q)
+            docker run -d --log-driver=syslog -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/sejongmate:latest
+            docker rm $(docker ps --filter 'status=exited' -a -q)
+            docker image prune -a -f

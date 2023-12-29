@@ -5,7 +5,7 @@ import { Nav } from "@/navbar";
 import { Suspense } from "react";
 import ProgramListLoading from "./loading";
 
-export default function Programs() {
+export default async function Programs() {
   return (
     <>
       <Header title="프로그램" />
