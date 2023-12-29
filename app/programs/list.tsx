@@ -1,9 +1,14 @@
 import { programList } from "@/apis/program";
 import ProgramItem from "./item";
+import { redirect } from "next/navigation";
 
 const fetchData = async () => {
-  const res = await programList();
-  return res;
+  try {
+    const res = await programList();
+    return res;
+  } catch (e) {
+    redirect("/");
+  }
 };
 
 export default async function ProgramList() {

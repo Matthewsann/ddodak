@@ -1,9 +1,14 @@
 import { programDetail, programList } from "@/apis/program";
 import { format } from "date-fns";
+import { redirect } from "next/navigation";
 
 const fetchData = async (id: number) => {
-  const res = await programDetail({ id });
-  return res;
+  try {
+    const res = await programDetail({ id });
+    return res;
+  } catch (e) {
+    redirect("/programs");
+  }
 };
 
 export default async function ProgramDetail({ id }: { id: number }) {

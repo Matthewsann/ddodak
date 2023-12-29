@@ -4,6 +4,7 @@ import Icons from "@/components/icons";
 import { Nav } from "@/navbar";
 import { userInfo } from "@/apis/auth";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const MENU_ITEMS = [
   {
@@ -25,7 +26,7 @@ const MENU_ITEMS = [
   },
 ];
 
-const getData = async () => {
+const fetchData = async () => {
   try {
     const res = await userInfo();
     return res;
@@ -35,7 +36,7 @@ const getData = async () => {
 };
 
 export default async function Home() {
-  const user = await getData();
+  const user = await fetchData();
 
   return (
     <>

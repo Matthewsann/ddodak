@@ -1,9 +1,14 @@
 import { programRecommendList } from "@/apis/program";
 import Program from "..";
+import { redirect } from "next/navigation";
 
 const fetchData = async () => {
-  const res = await programRecommendList();
-  return res;
+  try {
+    const res = await programRecommendList();
+    return res;
+  } catch (e) {
+    redirect("/");
+  }
 };
 
 export default async function ProgramList() {
