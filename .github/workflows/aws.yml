@@ -51,7 +51,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }} # pem 키
           # 도커 작업
           script: |
-            cd /data/sangdam/sangdamplus
+            cd /data/sangdamplus/next-dev
             docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker stop $(docker ps -a -q)
             docker run -d --log-driver=syslog -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
