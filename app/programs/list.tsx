@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 const fetchData = async () => {
   try {
-    const res = await programList();
+    const res = await programList({ page: 1, order: "price" }); // TODO: page, order
     return res;
   } catch (e) {
     redirect("/");

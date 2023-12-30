@@ -35,11 +35,11 @@ export default function LoginForm() {
     <div className="py-8 w-full h-full flex flex-col justify-between">
       <div>
         <label className="flex flex-col gap-1 w-full">
-          <span className="font-medium text-sm">EMAIL 이메일</span>
+          <span className="font-medium text-sm">ID 아이디</span>
           <input
             type="text"
             className="input rounded-full bg-black/10 font-light text-xs"
-            placeholder="이메일 입력"
+            placeholder="아이디 입력"
             value={id}
             onChange={(e) => setId(e.target.value)}
           />
@@ -76,7 +76,7 @@ export default function LoginForm() {
           </div>
           <div className="w-px h-4 bg-black" />
           <div>
-            <Link href="#">회원가입</Link>
+            <Link href="/register">회원가입</Link>
           </div>
         </div>
       </div>

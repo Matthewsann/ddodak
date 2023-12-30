@@ -27,9 +27,15 @@ interface ProgramListResponse {
   data: ProgramType[];
 }
 
-export const programList = async () => {
+export const programList = async ({
+  order,
+  page,
+}: {
+  order: string;
+  page: number;
+}) => {
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_API_HOST}/program/list`
+    `${process.env.NEXT_PUBLIC_API_HOST}/program/list?order=${order}&page=${page}`
   );
 
   if (!result.ok) throw new Error("서버 에러");
