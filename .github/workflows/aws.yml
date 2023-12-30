@@ -40,7 +40,7 @@ jobs:
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
-          docker build -t sangdamplus .
+          docker build -t sangdamplus . --name next-dev
           docker tag sangdamplus ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
       - name: Deploy
@@ -52,7 +52,7 @@ jobs:
           # 도커 작업
           script: |
             cd /data/sangdamplus/next-dev
-            docker stop ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+            docker stop next-dev
             docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker run -d --log-driver=syslog -p 10100:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker rm $(docker ps --filter 'status=exited' -a -q)
