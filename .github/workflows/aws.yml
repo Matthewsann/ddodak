@@ -54,6 +54,6 @@ jobs:
             cd /data/sangdamplus/next-dev
             docker stop ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
-            docker run -d --log-driver=syslog -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+            docker run -d --log-driver=syslog -p 10100:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker rm $(docker ps --filter 'status=exited' -a -q)
             docker image prune -a -f
