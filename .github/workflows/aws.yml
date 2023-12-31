@@ -16,7 +16,7 @@ jobs:
       - run: mkdir /app
       - run: cd /app
       - run: touch .env
-      - run: echo "${{ secrets.APPLICATION_ENV }}" > ./env
+      - run: echo "${{ secrets.APPLICATION_ENV }}" > /.env
       - run: pnpm install
       - run: pnpm run build
       - name: Upload Next build          # Upload the artifact
