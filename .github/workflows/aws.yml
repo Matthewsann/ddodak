@@ -41,7 +41,8 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
           docker build -t sangdamplus-next-dev-image .
-          docker push sangdamplus-next-dev-image
+          docker tag sangdamplus-next-dev-image ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
+          docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
