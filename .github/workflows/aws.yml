@@ -41,8 +41,8 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
           docker build -t sangdamplus-next-dev-image .
-          docker tag sangdamplus-next-dev-image ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
-          docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
+          docker tag sangdamplus-next-dev-image ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image:latest
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -52,7 +52,7 @@ jobs:
           script: |
             cd /data/sangdamplus/next-dev
             docker stop next-dev
-            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
-            docker run -d --log-driver=syslog -p 10100:3000 sangdamplus-next-dev-image --name next-dev
+            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image:latest
+            docker run -d --log-driver=syslog -p 10100:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image --name next-dev
             docker rm next-dev
             docker image prune -a -f
