@@ -1,6 +1,5 @@
 import { programRecommendList } from "@/apis/program";
 import Program from "..";
-import { redirect } from "next/navigation";
 
 const fetchData = async () => {
   try {

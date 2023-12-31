@@ -41,19 +41,18 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
           docker build -t sangdamplus .
-          docker tag sangdamplus ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
+          docker tag sangdamplus next-dev-image
+          docker push next-dev-image
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AWS_HOST }} # EC2 인스턴스 퍼블릭 DNS
+          host: ${{ secrets.AWS_HOST }}
           username: sangdam
-          key: ${{ secrets.EC2_SSH_KEY }} # pem 키
-          # 도커 작업
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /data/sangdamplus/next-dev
             docker stop next-dev
             docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest
             docker run -d --log-driver=syslog -p 10100:3000 ${{ secrets.DOCKER_USERNAME }}/sangdamplus:latest --name next-dev
-            docker rm $(docker ps --filter 'status=exited' -a -q)
+            docker rm next-dev
             docker image prune -a -f
