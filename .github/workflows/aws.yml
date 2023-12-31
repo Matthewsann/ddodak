@@ -26,23 +26,22 @@ jobs:
           path: |
             .next
             public
-          retention-days: 7         # artifact retention duration, can be upto 30 days
+          retention-days: 7      
   docker-push:
-    needs: next-build        # Job depends on next-build(above) job
+    needs: next-build 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Download next build       # Download the above uploaded artifact
+      - name: Download next build  
         uses: actions/download-artifact@v2
         with:
           name: build
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
-          docker build -t sangdamplus .
-          docker tag sangdamplus next-dev-image
-          docker push next-dev-image
+          docker build -t sangdamplus-next-dev-image .
+          docker push sangdamplus-next-dev-image
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -52,7 +51,7 @@ jobs:
           script: |
             cd /data/sangdamplus/next-dev
             docker stop next-dev
-            docker pull next-dev-image
-            docker run -d --log-driver=syslog -p 10100:3000 next-dev-image --name next-dev
+            docker pull sangdamplus-next-dev-image
+            docker run -d --log-driver=syslog -p 10100:3000 sangdamplus-next-dev-image --name next-dev
             docker rm next-dev
             docker image prune -a -f
