@@ -16,7 +16,7 @@ export default function CounselorList() {
     const res = await centerAroundList({
       lat: latLng.lat,
       lng: latLng.lng,
-      distance: 500,
+      distance: 10000,
     });
     setData(res);
     setLoading(false);

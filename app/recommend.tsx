@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import Icons from "@/components/icons";
 import CenterList from "@//components/center/list";
-import CenterListLoading from "./components/center/list/loading";
 
 export default function Recommend() {
   return (
@@ -21,9 +19,7 @@ export default function Recommend() {
       </div>
       <div className="mt-2 overflow-x-auto no-scrollbar">
         <div className="px-7 w-max">
-          <Suspense fallback={<CenterListLoading />}>
-            <CenterList />
-          </Suspense>
+          <CenterList />
         </div>
       </div>
     </section>
