@@ -51,7 +51,7 @@ jobs:
           script: |
             cd /data/sangdamplus/next-dev
             docker stop next-dev
-            docker pull sangdamplus-next-dev-image
+            docker pull ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image
             docker run -d --log-driver=syslog -p 10100:3000 sangdamplus-next-dev-image --name next-dev
             docker rm next-dev
             docker image prune -a -f
