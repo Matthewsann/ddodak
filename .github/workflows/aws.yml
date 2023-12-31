@@ -39,7 +39,7 @@ jobs:
           touch ./.env
           echo "${{ secrets.APPLICATION_ENV }}" > ./.env
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_KEY }}
-          docker build -t sangdamplus-next-dev-image --env-file ./.env .
+          docker build -t sangdamplus-next-dev-image --build-arg ${{ secrets.APPLICATION_ENV }} .
           docker tag sangdamplus-next-dev-image ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/sangdamplus-next-dev-image:latest
       - name: Deploy
