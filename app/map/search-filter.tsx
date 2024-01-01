@@ -7,7 +7,14 @@ import RangeInput from "@/components/input/range";
 import { CONTACT, GENDERS, RELIGIONS } from "@/constants/filter";
 import { useState } from "react";
 import Icons from "@/components/icons";
-import { ContactFilter, GenderFilter, PriceFilter } from "./filters";
+import {
+  AgeFilter,
+  ContactFilter,
+  GenderFilter,
+  KeywordFilter,
+  PriceFilter,
+  ReligionFilter,
+} from "./filters";
 
 export default function SearchFilter({
   close,
@@ -27,7 +34,7 @@ export default function SearchFilter({
   const [pFilter, setPFilter] = useState<FilterType>(filter);
 
   return (
-    <div className="absolute top-0 inset-x-0 min-h-[100dvh] bg-background z-[1000]">
+    <div className="absolute top-0 inset-x-0 h-[100dvh] bg-background z-[1000] overflow-y-auto no-scrollbar">
       <header className="px-4 py-2 grid grid-cols-[48px_1fr_48px]">
         <button className="btn btn-ghost btn-circle" onClick={() => close()}>
           <Icons.GoBack className="shrink-0" />
@@ -48,49 +55,19 @@ export default function SearchFilter({
           <GenderFilter filter={pFilter} setFilter={setPFilter} />
         </li>
         <li>
+          <AgeFilter filter={pFilter} setFilter={setPFilter} />
         </li>
 
         <li>
-          <FilterTitle title="연령" duplicate />
-          <div className="flex gap-2 mt-4">
-            {RELIGIONS.map((f, key) => (
-              <FilterItem
-                key={key}
-                checked={pFilter.religion.includes(f.key)}
-                toggle={() => {
-                  setPFilter(() => ({
-                    ...pFilter,
-                    religion: pFilter.religion.includes(f.key)
-                      ? pFilter.religion.filter((type) => type !== f.key)
-                      : [...pFilter.religion, f.key],
-                  }));
-                }}
-              >
-                {f.value}
-              </FilterItem>
-            ))}
-          </div>
+          <ReligionFilter filter={pFilter} setFilter={setPFilter} />
         </li>
 
         <li>
-          <FilterTitle title="특징" duplicate />
-          <div className="flex gap-2 flex-wrap mt-4">
-            {keywords.map((pFilter, key) => (
-              <FilterItem
-                checked={selectedKeywords.includes(pFilter.id)}
-                key={key}
-                toggle={() => {
-                  selectKeyword((keywords) =>
-                    keywords.includes(pFilter.id)
-                      ? keywords.filter((id) => id !== pFilter.id)
-                      : [...keywords, pFilter.id]
-                  );
-                }}
-              >
-                {pFilter.keyword}
-              </FilterItem>
-            ))}
-          </div>
+          <KeywordFilter
+            selectedKeywords={selectedKeywords}
+            keywords={keywords}
+            selectKeyword={selectKeyword}
+          />
         </li>
       </ul>
 
