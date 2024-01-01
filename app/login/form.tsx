@@ -1,7 +1,6 @@
 "use client";
 
 import { authLogin } from "@/apis/auth";
-import { useUserStore } from "@/store/user-store";
 import cc from "classcat";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,8 +14,6 @@ export default function LoginForm() {
 
   const router = useRouter();
 
-  const { setEmail } = useUserStore();
-
   const handleSubmit = useCallback(async () => {
     try {
       const result = await authLogin({
@@ -24,7 +21,6 @@ export default function LoginForm() {
         password,
       });
 
-      setEmail(id);
       router.push("/mypage");
     } catch (e) {
       setError(true);

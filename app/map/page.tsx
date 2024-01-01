@@ -15,6 +15,7 @@ import { throttle } from "lodash";
 export default function Map() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [centers, setCenters] = useState<CenterType[]>([]);
+
   const [loc, setLoc] = useState<Coordinates>();
   const [bound, setBound] = useState<{
     minLongitude: number;
@@ -68,10 +69,11 @@ export default function Map() {
 
   const updateCenters = useCallback(
     throttle(async () => {
+      if (!loc) return;
       const centers = await centerMapList({
-        ...bound,
         keywords: selectedKeywords,
         ...filter,
+        ...bound,
       });
       setCenters(centers);
     }, 1000),
@@ -84,8 +86,8 @@ export default function Map() {
 
   const renewLoc = () => {
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setLoc([pos.coords.longitude, pos.coords.latitude]);
+      (position) => {
+        setLoc([position.coords.longitude, position.coords.latitude]);
       },
       (err) => {
         console.log(err);

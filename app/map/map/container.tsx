@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Coordinates } from "@/types/map";
 import Map from ".";
-import Icons from "@/components/icons";
 import type { CenterType } from "@/types/center";
 
 export default function MapContainer({

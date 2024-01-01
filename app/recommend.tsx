@@ -1,7 +1,12 @@
+"use client";
+
 import Icons from "@/components/icons";
 import CenterList from "@//components/center/list";
+import { useSearchStore } from "./store/search-store";
 
 export default function Recommend() {
+  const { addr } = useSearchStore();
+
   return (
     <section className="flex flex-col">
       <div className="flex justify-between pl-7 pr-3">
@@ -9,7 +14,7 @@ export default function Recommend() {
           <div className="font-bold text-sm">내 주변 상담 센터</div>
           <div className="flex items-center text-xs font-light gap-2">
             <Icons.GPS className="w-5 h-5 fill-black" />
-            서울시 성북구
+            {addr}
           </div>
         </div>
         <button className="btn btn-ghost stroke-black">

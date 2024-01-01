@@ -1,10 +1,6 @@
 "use client";
 
-import { authLogin } from "@/apis/auth";
-import { useUserStore } from "@/store/user-store";
 import cc from "classcat";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 interface Props {

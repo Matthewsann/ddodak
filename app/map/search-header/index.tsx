@@ -13,6 +13,7 @@ import {
   ReligionFilter,
 } from "@/map/filters";
 import IndividualList from "./individual-list";
+import { useSearchStore } from "@/store/search-store";
 
 export default function SearchHeader({
   openFilter,
@@ -27,6 +28,7 @@ export default function SearchHeader({
   const [openIndividually, setOpenIndividually] = useState<
     "contact" | "gender" | "price" | "age" | "religion" | ""
   >("");
+  const { addr } = useSearchStore();
 
   return (
     <div className="w-full flex flex-col bg-background px-4 py-2">
@@ -40,7 +42,7 @@ export default function SearchHeader({
         <div className="relative w-full flex items-center justify-end">
           <input
             className="h-7 px-3 rounded-full w-full bg-footer shadow-float font-medium text-[11px] placeholder:text-black/40"
-            placeholder="성북구 안암동"
+            placeholder={addr}
             onFocus={() => router.push("/search")}
           />
           <Icons.Search className="shrink-0 stroke-black absolute right-2" />
