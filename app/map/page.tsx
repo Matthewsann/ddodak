@@ -3,13 +3,14 @@
 import type { CenterType } from "@/types/center";
 import { useCallback, useEffect, useState } from "react";
 import MapContainer from "./map/container";
-import SearchHeader from "../components/search-header";
+import SearchHeader from "./search-header";
 import SearchFilter from "./search-filter";
 import SearchResult from "./search-result";
 import { Coordinates } from "@/types/map";
 import { keywordList } from "@/apis/counselor";
 import { FilterType, KeywordType } from "@/types/counselor";
 import { centerMapList } from "@/apis/center";
+import { throttle } from "lodash";
 
 export default function Map() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -65,14 +66,17 @@ export default function Map() {
     getKeywords();
   }, []);
 
-  const updateCenters = useCallback(async () => {
-    const centers = await centerMapList({
-      ...bound,
-      keywords: selectedKeywords,
-      ...filter,
-    });
-    setCenters(centers);
-  }, [bound, selectedKeywords, filter]);
+  const updateCenters = useCallback(
+    throttle(async () => {
+      const centers = await centerMapList({
+        ...bound,
+        keywords: selectedKeywords,
+        ...filter,
+      });
+      setCenters(centers);
+    }, 1000),
+    [bound, selectedKeywords, filter]
+  );
 
   useEffect(() => {
     updateCenters();

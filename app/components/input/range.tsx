@@ -45,7 +45,10 @@ export default function RangeInput({
             min={range[0]}
             max={range[1]}
             value={min}
-            onChange={(e) => setMin(Number(e.target.value))}
+            onChange={(e) => {
+              if (Number(e.target.value) >= max) e.target.value = `${max - 1}`;
+              setMin(Number(e.target.value));
+            }}
             step={step}
           />
           <input
@@ -54,7 +57,10 @@ export default function RangeInput({
             min={range[0]}
             max={range[1]}
             value={max}
-            onChange={(e) => setMax(Number(e.target.value))}
+            onChange={(e) => {
+              if (Number(e.target.value) <= min) e.target.value = `${min + 1}`;
+              setMax(Number(e.target.value));
+            }}
             step={step}
           />
         </div>
