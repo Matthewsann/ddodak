@@ -18,7 +18,6 @@ export default function Global() {
             }),
           },
           function (status, response) {
-            console.log(status, response);
             if (status !== window.naver.maps.Service.Status.OK) {
               return;
             }
