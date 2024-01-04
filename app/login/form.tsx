@@ -17,7 +17,7 @@ export default function LoginForm() {
   const handleSubmit = useCallback(async () => {
     try {
       const result = await authLogin({
-        email: id,
+        id,
         password,
       });
 

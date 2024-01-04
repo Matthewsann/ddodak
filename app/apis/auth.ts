@@ -8,21 +8,22 @@ interface AuthLoginResponse {
 }
 
 export const authLogin = async ({
-  email,
+  id,
   password,
 }: {
-  email: string;
+  id: string;
   password: string;
 }) => {
   const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/auth/login`, {
     method: "POST",
     body: JSON.stringify({
-      email,
+      id,
       password,
     }),
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
 
   if (!result.ok) throw new Error("서버 에러");
