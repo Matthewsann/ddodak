@@ -85,7 +85,7 @@ export default function Home() {
             <li
               className="w-full flex justify-end"
               onClick={() => {
-                cookies().delete("token");
+                //logout();
               }}
             >
               <button className="btn btn-ghost !p-0 font-light text-xs">
