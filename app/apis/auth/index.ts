@@ -1,4 +1,5 @@
 import { UserInfoType } from "@/types/user";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 
 interface AuthLoginResponse {
   success: boolean;
@@ -14,17 +15,20 @@ export const authLogin = async ({
   id: string;
   password: string;
 }) => {
-  const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/auth/login`, {
-    method: "POST",
-    body: JSON.stringify({
-      id,
-      password,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/apis/auth/login`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+        password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
 
   if (!result.ok) throw new Error("서버 에러");
 
@@ -40,9 +44,10 @@ interface UserInfoResponse {
   message: string;
   data: UserInfoType;
 }
-
 export const userInfo = async () => {
-  const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/user/info`);
+  const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/user/info`, {
+    credentials: "include",
+  });
 
   if (!result.ok) throw new Error("서버 에러");
 

@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Profile from "./profile";
 import Icons from "@/components/icons";
 import { Nav } from "@/navbar";
+import { useCallback, useEffect, useState } from "react";
+import { UserInfoType } from "@/types/user";
 import { userInfo } from "@/apis/auth";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 const MENU_ITEMS = [
   {
@@ -26,17 +28,21 @@ const MENU_ITEMS = [
   },
 ];
 
-const fetchData = async () => {
-  try {
-    const res = await userInfo();
-    return res;
-  } catch (e) {
-    return null;
-  }
-};
+export default function Home() {
+  const [user, setUser] = useState<UserInfoType | null>(null);
 
-export default async function Home() {
-  const user = await fetchData();
+  const checkLogin = useCallback(async () => {
+    try {
+      const res = await userInfo();
+      setUser(res);
+    } catch (e) {
+      setUser(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
   return (
     <>
