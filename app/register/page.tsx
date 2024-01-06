@@ -7,7 +7,7 @@ export default function Login() {
       <Header />
       <main className="flex flex-col items-center w-full px-8 h-full mt-16">
         <div className="w-full text-center text-primary font-semibold text-lg border-b border-b-primary py-3">
-          로그인
+          회원가입
         </div>
         <RegisterForm />
       </main>

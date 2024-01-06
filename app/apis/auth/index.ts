@@ -56,3 +56,55 @@ export const userInfo = async () => {
 
   return data.data;
 };
+
+
+interface AuthVerifyResponse {
+  success: boolean;
+  code: number;
+  message: string;
+  data: boolean;
+}
+
+export const authNameVerify = async ({ name }: { name: string }) => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/auth/name/verify`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    }
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: AuthVerifyResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};
+
+export const authIDVerify = async ({ id }: { id: string }) => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/auth/id/verify`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    }
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: AuthVerifyResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};
