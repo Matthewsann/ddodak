@@ -6,7 +6,7 @@ import Icons from "@/components/icons";
 import { Nav } from "@/navbar";
 import { useCallback, useEffect, useState } from "react";
 import { UserInfoType } from "@/types/user";
-import { userInfo } from "@/apis/auth";
+import { authSignOut, userInfo } from "@/apis/auth";
 
 const MENU_ITEMS = [
   {
@@ -88,7 +88,10 @@ export default function Home() {
                 //logout();
               }}
             >
-              <button className="btn btn-ghost !p-0 font-light text-xs">
+              <button
+                className="btn btn-ghost !p-0 font-light text-xs"
+                onClick={() => authSignOut()}
+              >
                 <Icons.Signout className="w-6 stroke-black" />
                 로그아웃
               </button>

@@ -154,3 +154,20 @@ export const authSignUp = async ({
 
   return data.data;
 };
+
+
+export const authSignOut = async () => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/apis/auth/sign-out`,
+    {
+      credentials: "include",
+    }
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};
