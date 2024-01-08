@@ -91,3 +91,23 @@ export const centerSearchList = async ({ text }: { text: string }) => {
 
   return data.data;
 };
+
+interface CenterDetailResponse {
+  success: boolean;
+  code: number;
+  message: string;
+  data: CenterType;
+}
+
+export const centerDetail = async (id: number) => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/center/${id}`
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: CenterDetailResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};

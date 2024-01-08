@@ -13,9 +13,14 @@ import Heart from "./heart.svg";
 import Chat from "./chat.svg";
 import Hamburger from "./hamburger.svg";
 import Close from "./close.svg";
+import HomePlus from "./home-plus.svg";
+import HeartBlank from "./heart-blank.svg";
+import Telephone from "./telephone.svg";
+import Edit from "./edit.svg";
 
 const Icons = {
   Home,
+  HomePlus,
   Map,
   Tablet,
   User,
@@ -27,8 +32,11 @@ const Icons = {
   Search,
   Signout,
   Heart,
+  HeartBlank,
   Chat,
   Hamburger,
   Close,
+  Telephone,
+  Edit,
 };
 export default Icons;
