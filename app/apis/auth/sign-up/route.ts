@@ -8,7 +8,6 @@ interface AuthSignUpResponse {
 export const POST = async (request: Request) => {
   const { id, name, email, password, phoneNumber, signUpWay } =
     await request.json();
-  console.log({ id, name, email, password, phoneNumber, signUpWay });
   const result = await fetch(
     `${process.env.NEXT_PUBLIC_API_HOST}/auth/signUp`,
     {
