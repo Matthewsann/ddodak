@@ -1,5 +1,6 @@
 import Icons from "@/components/icons";
 import { UserInfoType } from "@/types/user";
+import Link from "next/link";
 
 export default function Profile({ user }: { user: UserInfoType }) {
   return (
@@ -21,10 +22,13 @@ export default function Profile({ user }: { user: UserInfoType }) {
 
       <div className="px-3">
         <div className="flex justify-end">
-          <button className="btn btn-primary btn-sm py-2 px-4 !h-auto rounded-xl !text-black border-primary btn-outline">
+          <Link
+            href={"/save-list"}
+            className="btn btn-primary btn-sm py-2 px-4 !h-auto rounded-xl !text-black border-primary btn-outline"
+          >
             <Icons.Heart />
             나의 찜
-          </button>
+          </Link>
         </div>
 
         <ul className="grid grid-cols-3 gap-3 py-4">

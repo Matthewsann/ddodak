@@ -26,7 +26,6 @@ export const POST = async (request: Request) => {
       credentials: "include",
     }
   );
-  console.log(result);
 
   if (!result.ok) throw new Error("서버 에러");
 

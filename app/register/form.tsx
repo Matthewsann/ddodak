@@ -34,7 +34,7 @@ export default function RegisterForm({
       const res = await authIDVerify({ id: userInfo.id });
       setIsIDExist(!res);
     } catch (e) {
-      setIsNameExist(true);
+      setIsIDExist(true);
       console.log(e);
     }
   }, [userInfo.id]);

@@ -111,3 +111,23 @@ export const centerDetail = async (id: number) => {
 
   return data.data;
 };
+
+interface centerSaveListResponse {
+  success: boolean;
+  code: number;
+  message: string;
+  data: CenterType[];
+}
+
+export const centerSaveList = async (id: number) => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/center/saveList`
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: centerSaveListResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};
