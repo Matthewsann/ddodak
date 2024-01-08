@@ -4,9 +4,21 @@ import Header from "@/components/header";
 import RegisterForm from "./form";
 import { useState } from "react";
 import Agreement from "./agreement";
+import RegisterOKModal from "./modal";
+import { RegisterType } from "@/types/user";
 
-export default function Login() {
+export default function Register() {
   const [status, setStatus] = useState<"agreement" | "form">("agreement");
+  const [isRegisterOk, setIsRegisterOk] = useState(false);
+  const [userInfo, setUserInfo] = useState<RegisterType>({
+    id: "",
+    name: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    signUpWay: "EMAIL",
+  });
+
   return (
     <div className="w-full h-[100dvh] flex flex-col">
       {status === "agreement" && (
@@ -22,10 +34,15 @@ export default function Login() {
             <div className="w-full text-center text-primary font-semibold text-lg border-b border-b-primary py-3">
               회원가입
             </div>
-            <RegisterForm />
+            <RegisterForm
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+              next={() => setIsRegisterOk(true)}
+            />
           </main>
         </>
       )}
+      {isRegisterOk && <RegisterOKModal name={userInfo.name} />}
     </div>
   );
 }

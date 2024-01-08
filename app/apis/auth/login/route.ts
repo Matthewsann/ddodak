@@ -25,8 +25,6 @@ export const POST = async (request: Request) => {
   if (!data.success) throw new Error(data.message);
 
   const response = Response.json(data);
-  console.log("asdfo");
-  console.log(result.headers.get("set-cookie")! + "; SameSite=None; Secure;");
   response.headers.set(
     "set-cookie",
     result.headers.get("set-cookie")! + "; SameSite=None; Secure;"

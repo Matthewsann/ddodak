@@ -108,3 +108,49 @@ export const authIDVerify = async ({ id }: { id: string }) => {
 
   return data.data;
 };
+
+interface AuthSignUpResponse {
+  success: boolean;
+  code: number;
+  message: string;
+  data: boolean;
+}
+
+export const authSignUp = async ({
+  id,
+  name,
+  email,
+  password,
+  phoneNumber,
+  signUpWay,
+}: {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  signUpWay: string;
+}) => {
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/apis/auth/sign-up`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+        name,
+        email,
+        password,
+        phoneNumber,
+        signUpWay,
+      }),
+      credentials: "include",
+    }
+  );
+
+  if (!result.ok) throw new Error("서버 에러");
+
+  const data: AuthSignUpResponse = await result.json();
+  if (!data.success) throw new Error(data.message);
+
+  return data.data;
+};

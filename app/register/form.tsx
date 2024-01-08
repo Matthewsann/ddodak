@@ -1,27 +1,19 @@
 "use client";
 
-import { authIDVerify, authNameVerify } from "@/apis/auth";
+import { authIDVerify, authNameVerify, authSignUp } from "@/apis/auth";
+import { RegisterType } from "@/types/user";
 import cc from "classcat";
 import { useCallback, useEffect, useState } from "react";
 
-interface Props {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  phoneNumber: string;
-  signUpWay: "EMAIL";
-}
-
-export default function RegisterForm() {
-  const [userInfo, setUserInfo] = useState<Props>({
-    id: "",
-    name: "",
-    email: "",
-    password: "",
-    phoneNumber: "",
-    signUpWay: "EMAIL",
-  });
+export default function RegisterForm({
+  userInfo,
+  setUserInfo,
+  next,
+}: {
+  userInfo: RegisterType;
+  setUserInfo: React.Dispatch<React.SetStateAction<RegisterType>>;
+  next: () => void;
+}) {
   const [isIDExist, setIsIDExist] = useState(false);
   const [isNameExist, setIsNameExist] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,6 +55,19 @@ export default function RegisterForm() {
       verifyID();
     }
   }, [userInfo.id, verifyID]);
+
+  const handleSubmit = useCallback(async () => {
+    try {
+      const res = await authSignUp(userInfo);
+      if (!res) {
+        alert("회원가입에 실패했습니다.");
+        return;
+      }
+      next();
+    } catch (e) {
+      console.log(e);
+    }
+  }, [userInfo]);
 
   return (
     <div className="py-8 w-full h-max flex flex-col justify-between">
@@ -213,7 +218,7 @@ export default function RegisterForm() {
             userInfo.password.length < 8
           }
           onClick={() => {
-            // handleSubmit();
+            handleSubmit();
           }}
         >
           <span className="text-black font-semibold text-base group-active:text-white">
