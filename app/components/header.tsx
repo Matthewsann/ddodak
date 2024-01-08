@@ -7,8 +7,8 @@ export default function Header({ title }: { title?: string }) {
   const router = useRouter();
 
   return (
-    <div className="fixed inset-x-0 flex justify-center top-0">
-      <div className="w-full max-w-md px-4 h-16 grid grid-cols-[44px_1fr_44px] items-center bg-background z-10">
+    <div className="fixed inset-x-0 flex justify-center top-0 z-20">
+      <div className="w-full max-w-md px-4 h-16 grid grid-cols-[44px_1fr_44px] items-center bg-background">
         <button
           className="btn btn-ghost btn-circle"
           onClick={() => router.back()}

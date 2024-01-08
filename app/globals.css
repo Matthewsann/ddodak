@@ -3,75 +3,93 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 100; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 100;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 200; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 200;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 300; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 300;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 400; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 500; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 500;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 600; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 600;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 700; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 700;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 800; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 800;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff)
+      format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: 'SCoreDream';
-  font-weight: 900; 
-  font-style: normal; 
-  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff2) format('woff2'),
-       url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff) format('woff');
+  font-family: "SCoreDream";
+  font-weight: 900;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff)
+      format("woff");
   font-display: swap;
 }
 
@@ -100,13 +118,34 @@
   .item-button-selected {
     @apply item-button bg-primary text-white;
   }
+  .contents-title {
+    @apply font-semibold text-sm mb-3;
+  }
   .thumb::-webkit-slider-thumb {
     height: 18px;
     width: 18px;
     border-radius: 50%;
     background: white;
-    filter: drop-shadow(1px 1px 4px rgba(9, 9, 9, 0.20));
+    filter: drop-shadow(1px 1px 4px rgba(9, 9, 9, 0.2));
     appearance: none;
     pointer-events: auto;
   }
+}
+
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-pagination-bullet {
+  width: 6px !important;
+  height: 6px !important;
+  transform: translateY(32px);
+}
+
+.swiper-pagination-bullet-active {
+  background: rgb(255 104 88 / var(--tw-text-opacity)) !important;
+}
+
+.swiper-slide-next, .swiper-slide-prev {
+  transform: translateZ(0) scale(0.9) !important;
 }

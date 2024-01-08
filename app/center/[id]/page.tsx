@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import Icons from "@/components/icons";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Contents from "./contents";
 
 const fetchData = async (id: number) => {
   try {
@@ -53,19 +54,20 @@ export default async function CenterDetail({
       </div>
 
       <div className="grid grid-cols-2 gap-5 px-5 my-7">
-        <button className="btn btn-sm w-full btn-primary btn-outline !rounded-full !text-black !border-primary !font-medium !text-sm">
+        <a
+          href={`tel:${data.phoneNumber}`}
+          className="btn btn-sm w-full btn-primary btn-outline !rounded-full !text-black !border-primary !font-medium !text-sm"
+        >
           <Icons.Telephone />
           전화하기
-        </button>
+        </a>
         <button className="btn btn-sm w-full btn-primary btn-outline !rounded-full !text-black !border-primary !font-medium !text-sm">
           <Icons.Edit />
           상담신청서 작성
         </button>
       </div>
 
-      <div className="w-full grid grid-cols-4 shadow-lg bg-background py-3 text-xs font-semibold">
-        <button>센터정보</button>
-      </div>
+      <Contents data={data} />
     </div>
   );
 }

@@ -1,3 +1,6 @@
+import { ServiceCode } from "./codes";
+import { CounselorType } from "./counselor";
+
 export interface CenterType {
   id: number;
   name: string;
@@ -15,4 +18,37 @@ export interface CenterType {
   latitude: number;
   longitude: number;
   centerType: "USER" | "CENTER";
+}
+
+export interface CenterDetailType extends CenterType {
+  imageList: {
+    id: number;
+    imageUrl: string;
+    orderNum: number;
+  }[];
+  eventList: {
+    id: number;
+    imageUrl: string;
+    orderNum: number;
+  }[];
+  scheduleList: {
+    id: number;
+    weekday: {
+      code: "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN";
+      title: string;
+    };
+    startTime: string;
+    endTime: string;
+    isStop: "N" | "Y";
+    orderNum: number;
+  }[];
+  counselorList: CounselorType[];
+  serviceList: {
+    id: number;
+    price: number;
+    title: string;
+    content: string;
+    orderNum: number;
+    serviceType: ServiceCode;
+  }[];
 }

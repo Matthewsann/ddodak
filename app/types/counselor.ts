@@ -19,3 +19,26 @@ export interface FilterType {
   minAge: number;
   maxAge: number;
 }
+
+export interface CounselorType {
+  id: number;
+  name: string;
+  profileUrl: string;
+  price: number;
+  address: string;
+  shortAddress: string;
+  phoneNumber: string;
+  email: string;
+  isServicePhone: "Y" | "N";
+  isServiceOnline: "Y" | "N";
+  isServiceOffline: "Y" | "N";
+  etc: string;
+  intro: string;
+  birthYmd: string;
+  gender: GenderCode;
+  religion: {
+    code: ReligionCode;
+    title: string;
+  };
+  counselorType: CounselorType;
+}

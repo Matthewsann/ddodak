@@ -1,4 +1,4 @@
-import type { CenterType } from "@/types/center";
+import type { CenterDetailType, CenterType } from "@/types/center";
 import { ContactCode, GenderCode, ReligionCode } from "@/types/codes";
 import { FilterType } from "@/types/counselor";
 
@@ -96,7 +96,7 @@ interface CenterDetailResponse {
   success: boolean;
   code: number;
   message: string;
-  data: CenterType;
+  data: CenterDetailType;
 }
 
 export const centerDetail = async (id: number) => {
