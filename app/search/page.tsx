@@ -72,7 +72,7 @@ export default function Search() {
         ))}
       </div>
       {isSearched && loc ? (
-        <SearchList centers={centers} loc={loc} />
+        <SearchList centers={centers} loc={loc} nowMapCenter={loc} />
       ) : (
         <div className="w-full h-full text-center flex items-center justify-center font-medium text-sm">
           센터명, 지하철역, 지역명을
