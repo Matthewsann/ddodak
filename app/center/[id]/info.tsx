@@ -64,7 +64,7 @@ export default function CenterInfo({ data }: { data: CenterDetailType }) {
                 <div>
                   {schedule.startTime.slice(0, 2)}:
                   {schedule.startTime.slice(2, 4)}-
-                  {schedule.endTime.slice(0, 2)}: {schedule.endTime.slice(2, 4)}
+                  {schedule.endTime.slice(0, 2)}:{schedule.endTime.slice(2, 4)}
                 </div>
                 <div className="text-primary text-xs">
                   {schedule.isStop ? "" : "진료중"}
@@ -77,7 +77,7 @@ export default function CenterInfo({ data }: { data: CenterDetailType }) {
             <div>{day.weekday.title}</div>
             <div>
               {day.startTime.slice(0, 2)}:{day.startTime.slice(2, 4)}-
-              {day.endTime.slice(0, 2)}: {day.endTime.slice(2, 4)}
+              {day.endTime.slice(0, 2)}:{day.endTime.slice(2, 4)}
             </div>
             <div className="text-primary text-xs">
               {day.isStop ? "" : "진료중"}
