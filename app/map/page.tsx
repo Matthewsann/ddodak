@@ -11,8 +11,12 @@ import { keywordList } from "@/apis/counselor";
 import { FilterType, KeywordType } from "@/types/counselor";
 import { centerMapList } from "@/apis/center";
 import { throttle } from "lodash";
+import { useSearchParams } from "next/navigation";
 
 export default function Map() {
+  const searchParams = useSearchParams();
+  const [nowMapCenter, setNowMapCenter] = useState<Coordinates>([0, 0]);
+
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [centers, setCenters] = useState<CenterType[]>([]);
 
@@ -49,9 +53,16 @@ export default function Map() {
   });
 
   const initLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLoc([position.coords.longitude, position.coords.latitude]);
-    });
+    if (searchParams.get("lat") && searchParams.get("lng")) {
+      setLoc([
+        Number(searchParams.get("lng")),
+        Number(searchParams.get("lat")),
+      ]);
+    } else {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLoc([position.coords.longitude, position.coords.latitude]);
+      });
+    }
   };
 
   useEffect(() => {
@@ -106,10 +117,20 @@ export default function Map() {
           />
         </div>
         <div className="w-full h-full bg-green-400">
-          <MapContainer centers={centers} setBound={setBound} loc={loc} />
+          <MapContainer
+            centers={centers}
+            setBound={setBound}
+            loc={loc}
+            setNowMapCenter={setNowMapCenter}
+          />
         </div>
         {loc && (
-          <SearchResult centers={centers} loc={loc} renewLoc={renewLoc} />
+          <SearchResult
+            centers={centers}
+            loc={loc}
+            renewLoc={renewLoc}
+            nowMapCenter={nowMapCenter}
+          />
         )}
       </div>
       {isFilterOpen && (

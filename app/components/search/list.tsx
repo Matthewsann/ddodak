@@ -1,13 +1,16 @@
 import { CenterType } from "@/types/center";
 import { getDistanceKm } from "@/utils/latlng-to-meter";
 import CenterCard from "./card";
+import { Coordinates } from "@/types/map";
 
 export default function SearchList({
   centers,
   loc,
+  nowMapCenter,
 }: {
   centers: CenterType[];
-  loc: [number, number];
+  loc: Coordinates;
+  nowMapCenter: Coordinates;
 }) {
   return centers.length > 0 ? (
     centers
@@ -20,6 +23,8 @@ export default function SearchList({
         <CenterCard
           key={i}
           center={center}
+          nowMapCenter={nowMapCenter}
+          loc={loc}
           distance={getDistanceKm(
             loc[1],
             loc[0],

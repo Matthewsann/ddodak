@@ -4,6 +4,7 @@ import Icons from "@/components/icons";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Contents from "./contents";
+import CenterHeader from "./center-header";
 
 const fetchData = async (id: number) => {
   try {
@@ -26,7 +27,7 @@ export default async function CenterDetail({
 
   return (
     <div className="w-full h-[100dvh] flex flex-col pt-16">
-      <Header />
+      <CenterHeader />
       <div className="flex gap-5 px-5">
         <div className="w-[120px] h-[120px] rounded-full relative overflow-hidden shrink-0">
           <img src={data.profileUrl} className="w-full h-full object-cover" />

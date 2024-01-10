@@ -9,10 +9,12 @@ export default function SearchResult({
   centers,
   loc,
   renewLoc,
+  nowMapCenter,
 }: {
   centers: CenterType[];
   loc: Coordinates;
   renewLoc: () => void;
+  nowMapCenter: Coordinates;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const sheet = useRef<SheetRef>(null);
@@ -59,7 +61,11 @@ export default function SearchResult({
             <Sheet.Header />
             <Sheet.Content className="px-5 pb-12">
               <Sheet.Scroller>
-                <SearchList centers={centers} loc={loc} />
+                <SearchList
+                  centers={centers}
+                  loc={loc}
+                  nowMapCenter={nowMapCenter}
+                />
               </Sheet.Scroller>
             </Sheet.Content>
           </Sheet.Container>

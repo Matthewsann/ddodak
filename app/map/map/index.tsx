@@ -12,6 +12,7 @@ export default function Map({
   centers,
   loc,
   setBound,
+  setNowMapCenter,
 }: {
   centers: CenterType[];
   loc: Coordinates;
@@ -23,6 +24,7 @@ export default function Map({
       maxLongitude: number;
     }>
   >;
+  setNowMapCenter: React.Dispatch<React.SetStateAction<Coordinates>>;
 }) {
   const mapRef = useRef<NaverMap>();
   const [mapInstance, setMapInstance] = useState<NaverMap>();
@@ -69,6 +71,10 @@ export default function Map({
         minLongitude: b.minX(),
         maxLongitude: b.maxX(),
       });
+      setNowMapCenter([
+        mapRef.current.getCenter().x,
+        mapRef.current.getCenter().y,
+      ]);
     }, 2000),
     []
   );

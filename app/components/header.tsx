@@ -1,9 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Icons from "./icons";
 
-export default function Header({ title }: { title?: string }) {
+export default function Header({
+  context,
+  title,
+  backQuery,
+}: {
+  context?: any;
+  title?: string;
+  backQuery?: string;
+}) {
   const router = useRouter();
 
   return (
@@ -11,7 +19,13 @@ export default function Header({ title }: { title?: string }) {
       <div className="w-full max-w-md px-4 h-16 grid grid-cols-[44px_1fr_44px] items-center bg-background">
         <button
           className="btn btn-ghost btn-circle"
-          onClick={() => router.back()}
+          onClick={() => {
+            if (backQuery) {
+              router.replace(backQuery);
+              return;
+            }
+            router.back();
+          }}
         >
           <Icons.GoBack />
         </button>
