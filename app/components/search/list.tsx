@@ -39,9 +39,11 @@ export default function SearchList({
         검색결과가 존재하지 않습니다.
       </div>
       <img src="/asset/map/no-result.png" className="w-[138px] h-[147px]" />
-      <button className="btn btn-lg !rounded-full btn-primary w-full !text-white -translate-y-12">
-        적용하기
-      </button>
+      <div className="-translate-y-12 w-full">
+        <button className="btn btn-lg !rounded-full btn-primary w-full !text-white">
+          센터/상담사 등록 요청하기
+        </button>
+      </div>
     </div>
   );
 }

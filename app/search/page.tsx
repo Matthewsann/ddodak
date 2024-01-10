@@ -11,13 +11,14 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function Search() {
   const router = useRouter();
-  const { searchList, addr } = useSearchStore();
+  const { searchList, addr, addSearch } = useSearchStore();
   const [search, setSearch] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [loc, setLoc] = useState<Coordinates>();
   const [centers, setCenters] = useState<CenterType[]>([]);
 
   const handleSearch = useCallback(async () => {
+    addSearch(search);
     try {
       const res = await centerSearchList({ text: search });
       setCenters(res);
@@ -51,6 +52,11 @@ export default function Search() {
             autoFocus
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           <button className="absolute right-2" onClick={() => setSearch("")}>
             <Icons.Close />
@@ -63,13 +69,15 @@ export default function Search() {
           <Icons.Search className="stroke-black" />
         </button>
       </div>
-      <div className="text-[11px] font-medium text-black/40 px-7 mt-2">
-        최근 검색어
-      </div>
-      <div className="flex justify-center gap-4 font-medium text-black/70 text-[11px]">
-        {searchList.map((search, key) => (
-          <div key={key}>{search}</div>
-        ))}
+      <div className="w-full h-16">
+        <div className="text-[11px] font-medium text-black/40 px-7 mt-2">
+          최근 검색어
+        </div>
+        <div className="flex px-7 gap-4 font-medium text-black/70 text-[11px] mt-1">
+          {searchList.reverse().map((search, key) => (
+            <div key={key}>{search}</div>
+          ))}
+        </div>
       </div>
       {isSearched && loc ? (
         <SearchList centers={centers} loc={loc} nowMapCenter={loc} />
