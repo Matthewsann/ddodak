@@ -3,7 +3,6 @@
 import Script from "next/script";
 import { Coordinates, NaverMap } from "@/types/map";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { throttle } from "lodash";
 import { CenterType } from "@/types/center";
 
 const mapId = "mapmapmap";
@@ -26,6 +25,7 @@ export default function Map({
   >;
   setNowMapCenter: React.Dispatch<React.SetStateAction<Coordinates>>;
 }) {
+  const [markers, setMarkers] = useState<naver.maps.Marker[]>([]);
   const mapRef = useRef<NaverMap>();
   const [mapInstance, setMapInstance] = useState<NaverMap>();
 
@@ -61,28 +61,31 @@ export default function Map({
     mapInstance.setCenter(new window.naver.maps.LatLng(loc));
   }, [loc, mapInstance]);
 
-  const onBoundChange = useCallback(
-    throttle(() => {
-      if (!mapRef.current) return;
-      const b = mapRef.current.getBounds();
-      setBound({
-        minLatitude: b.minY(),
-        maxLatitude: b.maxY(),
-        minLongitude: b.minX(),
-        maxLongitude: b.maxX(),
-      });
-      setNowMapCenter([
-        mapRef.current.getCenter().x,
-        mapRef.current.getCenter().y,
-      ]);
-    }, 2000),
-    []
-  );
+  const onBoundChange = useCallback(() => {
+    if (!mapRef.current) return;
+    const b = mapRef.current.getBounds();
+    setBound({
+      minLatitude: b.minY(),
+      maxLatitude: b.maxY(),
+      minLongitude: b.minX(),
+      maxLongitude: b.maxX(),
+    });
+    setNowMapCenter([
+      mapRef.current.getCenter().x,
+      mapRef.current.getCenter().y,
+    ]);
+  }, []);
 
   useEffect(() => {
     if (!mapInstance) return;
+
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    setMarkers([]);
+
     centers.forEach((center) => {
-      new naver.maps.Marker({
+      const marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(center.latitude, center.longitude),
         map: mapInstance,
         icon: {
@@ -92,8 +95,9 @@ export default function Map({
           anchor: new naver.maps.Point(12, 22),
         },
       });
+      setMarkers((prev) => [...prev, marker]);
     });
-  }, [centers]);
+  }, [centers, mapInstance]);
 
   return (
     <>

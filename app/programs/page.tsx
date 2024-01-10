@@ -3,11 +3,11 @@
 import { ProgramType } from "@/types/program";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { programList } from "@/apis/program";
-import { throttle } from "lodash";
 import ProgramTags from "./list/tags";
 import ProgramItem from "./list/item";
 import ProgramListLoading from "./list/loading";
 import { PROGRAM_ORDERS } from "@/constants/program";
+import { useDebounce } from "@/hooks/useThrottle";
 
 export default function ProgramList() {
   const [data, setData] = useState<ProgramType[]>([]);
@@ -27,14 +27,13 @@ export default function ProgramList() {
     setLoading(false);
   }, [data, page, tag]);
 
-  const handleScroll = useCallback(
-    throttle(() => {
-      if (!scroll.current || end || loading) return;
-      if (scroll.current.scrollTop > scroll.current.scrollHeight - 1200)
-        setPage((page) => page + 1);
-    }, 1000),
-    [end, loading]
-  );
+  const _handleScroll = useDebounce(() => {
+    if (!scroll.current || end || loading) return;
+    if (scroll.current.scrollTop > scroll.current.scrollHeight - 1200)
+      setPage((page) => page + 1);
+  }, 500);
+
+  const handleScroll = useCallback(() => _handleScroll(), [end, loading]);
 
   useEffect(() => {
     const scrollInstance = scroll.current;

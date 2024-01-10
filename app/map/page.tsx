@@ -10,8 +10,8 @@ import { Coordinates } from "@/types/map";
 import { keywordList } from "@/apis/counselor";
 import { FilterType, KeywordType } from "@/types/counselor";
 import { centerMapList } from "@/apis/center";
-import { throttle } from "lodash";
 import { useSearchParams } from "next/navigation";
+import { useDebounce } from "@/hooks/useThrottle";
 
 export default function Map() {
   const searchParams = useSearchParams();
@@ -82,16 +82,18 @@ export default function Map() {
     getKeywords();
   }, []);
 
+  const _updateCenters = useDebounce(async () => {
+    if (!loc) return;
+    const centers = await centerMapList({
+      keywords: selectedKeywords,
+      ...filter,
+      ...bound,
+    });
+    setCenters(centers);
+  }, 500);
+
   const updateCenters = useCallback(
-    throttle(async () => {
-      if (!loc) return;
-      const centers = await centerMapList({
-        keywords: selectedKeywords,
-        ...filter,
-        ...bound,
-      });
-      setCenters(centers);
-    }, 1000),
+    () => _updateCenters(),
     [bound, selectedKeywords, filter]
   );
 
