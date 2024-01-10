@@ -41,4 +41,5 @@ export interface CounselorType {
     title: string;
   };
   counselorType: CounselorType;
+  basicLicense: string;
 }

@@ -161,7 +161,7 @@ export default function CenterInfo({ data }: { data: CenterDetailType }) {
                 <div className="text-sm font-medium">
                   {counselor.name}{" "}
                   <span className="text-[11px] text-black/60 font-medium">
-                    {/* TODO: 자격증 정보 */}
+                    {counselor.basicLicense}
                   </span>
                 </div>
                 <div className="relative font-medium">

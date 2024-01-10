@@ -53,7 +53,11 @@ export default function Map() {
   });
 
   const initLocation = () => {
-    if (searchParams.get("lat") && searchParams.get("lng")) {
+    if (
+      searchParams.get("lat") &&
+      searchParams.get("lng") &&
+      Number(searchParams.get("lat")) !== 0
+    ) {
       setLoc([
         Number(searchParams.get("lng")),
         Number(searchParams.get("lat")),
